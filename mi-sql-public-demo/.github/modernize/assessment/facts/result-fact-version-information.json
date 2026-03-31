@@ -1,0 +1,23 @@
+{
+  "input_name": "Version Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Application version is 1.0-SNAPSHOT as declared in pom.xml",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml <version>: 1.0-SNAPSHOT",
+      "pom.xml <groupId>: com.example",
+      "pom.xml <artifactId>: demo",
+      "No git tags found in repository",
+      "No version in application.properties"
+    ],
+    "values": [
+      "Version: 1.0-SNAPSHOT",
+      "Version type: snapshot (development)",
+      "Full coordinates: com.example:demo:1.0-SNAPSHOT"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

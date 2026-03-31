@@ -1,0 +1,32 @@
+{
+  "input_name": "Architecture Pattern",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "Simple Monolith - single-class console application with no architectural layering",
+    "confidence": "high",
+    "evidence": [
+      "Single deployable unit: one Maven module producing a single JAR",
+      "Single Java class: com.example.MainSQL with all logic in main()",
+      "No MVC structure: no controllers, services, repositories, or view templates",
+      "No microservices indicators: no service discovery, API gateway, or multiple services",
+      "No event-driven patterns: no message brokers, event handlers, or pub/sub",
+      "No multiple modules in pom.xml; no subprojects",
+      "No docker-compose with multiple services",
+      "Entire application logic is contained in ~30 lines of code"
+    ],
+    "values": [
+      "Simple Monolith",
+      "Console Application"
+    ],
+    "architecture_details": {
+      "pattern": "Simple Monolith",
+      "service_count": 1,
+      "has_service_discovery": false,
+      "has_api_gateway": false,
+      "has_message_broker": false
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

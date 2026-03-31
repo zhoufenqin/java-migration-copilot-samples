@@ -1,0 +1,19 @@
+{
+  "input_name": "Application Port",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No application ports - this is a CLI console application with no HTTP server or network listener",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile with EXPOSE instructions found",
+      "No docker-compose*.yml with ports sections found",
+      "No Kubernetes manifests with containerPort/servicePort found",
+      "No server.port configuration in application.properties",
+      "Application is a standalone console app that connects to Azure SQL Database as a client and does not listen on any port"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

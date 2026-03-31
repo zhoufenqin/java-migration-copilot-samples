@@ -1,0 +1,18 @@
+{
+  "input_name": "Service Definition",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No service definition files found - application has no Docker Compose, Kubernetes, or Helm configurations",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose*.yml files found",
+      "No Kubernetes manifests in k8s/ or manifests/ directories",
+      "No Helm Chart.yaml or values.yaml files found",
+      "Application is a standalone Java console application not configured for container orchestration"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

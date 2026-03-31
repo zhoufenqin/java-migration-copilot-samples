@@ -1,0 +1,23 @@
+{
+  "input_name": "Application Name",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Application name is 'sqldbmi' (from README) with Maven artifactId 'demo'",
+    "confidence": "medium",
+    "evidence": [
+      "README.md title: '# sqldbmi'",
+      "pom.xml <artifactId>: 'demo'",
+      "pom.xml <groupId>: 'com.example'",
+      "Main class: com.example.MainSQL",
+      "Directory name: mi-sql-public-demo"
+    ],
+    "values": [
+      "sqldbmi",
+      "demo (Maven artifactId)",
+      "com.example:demo:1.0-SNAPSHOT"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

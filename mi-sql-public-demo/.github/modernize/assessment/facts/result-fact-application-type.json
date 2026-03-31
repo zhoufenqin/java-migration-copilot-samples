@@ -1,0 +1,22 @@
+{
+  "input_name": "Application Type",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Standalone Java Console Application - connects to Azure SQL Database using Managed Identity",
+    "confidence": "high",
+    "evidence": [
+      "Single main class: com.example.MainSQL with public static void main(String[] args)",
+      "No web framework dependencies (no Spring Boot, JAX-RS, Servlet API)",
+      "No HTTP server or REST API endpoint definitions",
+      "Connects to Azure SQL Database via JDBC and terminates after connection test",
+      "Maven shade plugin configured to produce executable JAR with MainSQL as entry point"
+    ],
+    "values": ["Console Application", "Command-line Tool"],
+    "script_output": {
+      "application_type": "Console Application"
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

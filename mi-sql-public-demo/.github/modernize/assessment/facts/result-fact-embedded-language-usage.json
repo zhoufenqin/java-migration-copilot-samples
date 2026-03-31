@@ -1,0 +1,21 @@
+{
+  "input_name": "Embedded Language Usage",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No embedded language usage detected - pure Java implementation with standard JDBC database connectivity only",
+    "confidence": "high",
+    "evidence": [
+      "No ScriptEngineManager, Nashorn, or GraalVM Polyglot usage found in source code",
+      "No GroovyShell, PythonInterpreter, JRuby, or Jython usage found",
+      "No ProcessBuilder or Runtime.getRuntime().exec() calls found",
+      "No System.loadLibrary() or JNI/JNA native code found",
+      "No scripting engine dependencies in pom.xml (groovy, jython, jruby, nashorn-core, etc.)",
+      "No .groovy, .py, .js, or .lua files in resources directory",
+      "Database access uses SQLServerDataSource via JDBC (standard Java SQL API, not dynamic SQL)"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

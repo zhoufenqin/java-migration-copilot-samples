@@ -1,0 +1,18 @@
+{
+  "input_name": "Base Image",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container base image found - no Dockerfile or Containerfile present in the project",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile found under mi-sql-public-demo/",
+      "No Containerfile found under mi-sql-public-demo/",
+      "No docker-compose*.yml files found",
+      "No Kubernetes manifests referencing container images"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

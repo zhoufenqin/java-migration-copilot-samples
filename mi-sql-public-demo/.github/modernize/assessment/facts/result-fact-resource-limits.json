@@ -1,0 +1,18 @@
+{
+  "input_name": "Resource Limits",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No resource limits configured - application has no container or Kubernetes orchestration",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose*.yml with deploy.resources sections found",
+      "No Kubernetes manifests with resources.limits or resources.requests found",
+      "No Kubernetes ResourceQuota definitions found",
+      "Application is a standalone Java console application run directly on JVM without containerization"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

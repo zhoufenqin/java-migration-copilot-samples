@@ -1,0 +1,25 @@
+{
+  "input_name": "Communication Protocols",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "JDBC over TCP (port 1433) is the only communication protocol - used to connect to Azure SQL Database",
+    "confidence": "high",
+    "evidence": [
+      "No @RestController, @RequestMapping, HttpClient, or RestTemplate usage found",
+      "No gRPC .proto files found",
+      "No message queue dependencies (RabbitMQ, Kafka, etc.) in pom.xml",
+      "No WebSocket usage found",
+      "MainSQL.java uses SQLServerDataSource with JDBC URL: jdbc:sqlserver://*.database.windows.net:1433",
+      "Connection uses ActiveDirectoryMSI authentication over encrypted TLS (encrypt=true)"
+    ],
+    "values": [
+      "Protocol: JDBC over TCP port 1433",
+      "Target: Azure SQL Database",
+      "Security: TLS encrypted, Managed Identity authentication (ActiveDirectoryMSI)",
+      "Direction: Outbound only (client-initiated)"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

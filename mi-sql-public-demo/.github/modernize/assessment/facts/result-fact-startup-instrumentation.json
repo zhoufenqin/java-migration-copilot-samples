@@ -1,0 +1,27 @@
+{
+  "input_name": "Startup Instrumentation",
+  "analysis_method": "Hybrid",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No structured logging framework, telemetry, or AOP detected - application uses System.out.println for basic console output only",
+    "confidence": "high",
+    "evidence": [
+      "No logback.xml, log4j2.xml, or other logging config files found",
+      "No SLF4J, Logback, Log4j2, or other logging dependencies in pom.xml",
+      "No OpenTelemetry, Application Insights, New Relic, Datadog, or APM dependencies",
+      "No @Aspect, @Before, @After, @Around AOP annotations in source code",
+      "MainSQL.java uses System.out.println() and System.out.print() for console output",
+      "MainSQL.java uses e.printStackTrace() for error reporting"
+    ],
+    "values": [],
+    "instrumentation_details": {
+      "logging_framework": "None (System.out.println only)",
+      "log_sinks": ["Console (stdout)"],
+      "telemetry_provider": "None",
+      "aop_framework": "None",
+      "startup_file": "MainSQL.java"
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

@@ -1,0 +1,26 @@
+{
+  "input_name": "Profile Settings",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No environment profiles detected - single configuration model using one application.properties file. Suitable for a simple demo/utility console application.",
+    "confidence": "high",
+    "evidence": [
+      "Only one configuration file: src/main/resources/application.properties",
+      "No application-dev.properties, application-test.properties, or application-prod.properties found",
+      "No application-*.yml profile-specific files found",
+      "No Spring profiles (spring.profiles.active) configured",
+      "No @Profile annotations in Java source code",
+      "No Maven <profiles> section in pom.xml",
+      "No Docker Compose or Kubernetes environment-specific configs"
+    ],
+    "values": [
+      "Environments: single (no profile separation)",
+      "Configuration file: application.properties (1 file)",
+      "Activation method: none (no profile system in use)",
+      "Profile-annotated components: 0"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

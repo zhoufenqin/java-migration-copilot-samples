@@ -1,0 +1,25 @@
+{
+  "input_name": "XML Configs",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No XML application configuration files detected - only pom.xml (Maven build descriptor) found. Application uses a single application.properties file for configuration.",
+    "confidence": "high",
+    "evidence": [
+      "Only 1 XML file found: pom.xml (Maven build descriptor, not application config)",
+      "No Spring XML context files (applicationContext*.xml, spring-*.xml, beans.xml)",
+      "No Hibernate configuration files (hibernate.cfg.xml, *.hbm.xml)",
+      "No Java EE deployment descriptors (web.xml, persistence.xml, ejb-jar.xml)",
+      "No MyBatis mapper files (*-mapper.xml, mybatis-config.xml)",
+      "No logging XML configuration (log4j.xml, log4j2.xml, logback.xml)",
+      "Application uses application.properties for runtime configuration"
+    ],
+    "values": [
+      "XML files found: 1 (pom.xml - build descriptor only)",
+      "Framework XML configs: none",
+      "Configuration approach: Java properties file (application.properties)"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}
