@@ -1,0 +1,20 @@
+{
+  "input_name": "Compliance Requirements",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No regulatory compliance requirements detected. This is a demonstration/sample application for migrating from Oracle to Azure PostgreSQL with no PII, PHI, payment data, or compliance documentation present.",
+    "confidence": "medium",
+    "evidence": [
+      "No GDPR, HIPAA, PCI-DSS, SOX, or ISO 27001 references found in any documentation or source code",
+      "README.md confirms this is a migration sample application",
+      "No data encryption, anonymization, or audit logging implemented",
+      "Todo items data (title, description, priority, due date) contain no regulated personal or financial data",
+      "No COMPLIANCE.md, SECURITY.md, or privacy-policy.md files found"
+    ],
+    "values": [],
+    "script_output": { "compliance_requirements": [] }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:33:30Z"
+}

@@ -1,0 +1,18 @@
+{
+  "input_name": "Volume Mounts",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No volume mounts configured for the application. No Dockerfile, docker-compose.yml, or Kubernetes manifests were found. The application itself is a stateless Spring Boot REST API with no persistent storage requirements. The Oracle database is run via a plain 'docker run' command documented in README.md with no named volumes or bind mounts specified.",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile found — no VOLUME instructions to inspect",
+      "No docker-compose.yml found — no volumes section",
+      "No Kubernetes manifests found — no volumeMounts or PersistentVolumeClaims",
+      "README.md 'docker run' command for Oracle XE does not specify any -v volume mount flags"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:27:00Z"
+}

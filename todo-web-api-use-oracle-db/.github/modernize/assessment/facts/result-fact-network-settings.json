@@ -1,0 +1,21 @@
+{
+  "input_name": "Network Settings",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container network configuration found. The application is not containerized, so no Docker or Kubernetes networking is configured. The application communicates over the host network: it listens on port 8080 (HTTP) and connects to Oracle DB at localhost:1521 using standard TCP/IP.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose.yml found — no networks section",
+      "No Kubernetes Service or NetworkPolicy manifests found",
+      "No Dockerfile EXPOSE or network_mode configuration",
+      "application.yaml uses localhost:1521 for Oracle DB — plain TCP on host network"
+    ],
+    "values": [
+      "Application port: 8080 (HTTP, host network)",
+      "Oracle DB connection: localhost:1521 (TCP, host network)"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:28:40Z"
+}

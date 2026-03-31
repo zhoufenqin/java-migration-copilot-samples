@@ -1,0 +1,32 @@
+{
+  "task_id": "014",
+  "input_name": "Runtime Environment",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Java 17 with Spring Boot 3.2.4 runtime. The application runs on the JVM (Java Virtual Machine) as a self-contained Spring Boot fat JAR or via Maven.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml <properties> java.version: 17",
+      "pom.xml parent: spring-boot-starter-parent 3.2.4",
+      "README.md Prerequisites: 'Java 17 or higher'",
+      "README.md startup: 'mvn clean spring-boot:run'",
+      "spring-boot-maven-plugin configured to produce executable fat JAR",
+      "No Dockerfile — runtime version from JVM host, not container base image"
+    ],
+    "values": [
+      "Runtime: Java (JVM)",
+      "Java version: 17 (LTS)",
+      "Framework: Spring Boot 3.2.4",
+      "Build tool: Maven 3.8+ (per README.md prerequisites)",
+      "Deployment: Spring Boot fat JAR or Maven plugin"
+    ],
+    "script_output": {
+      "runtime": "Java",
+      "version": "17",
+      "variant": "standard"
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:35:47Z"
+}

@@ -1,0 +1,30 @@
+{
+  "input_name": "Architecture Pattern",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "Layered Monolith (REST API)",
+    "confidence": "high",
+    "evidence": [
+      "Single @SpringBootApplication entry point: TodoApplication.java",
+      "Clear 4-layer package structure: controller / service / repository / model + util",
+      "Single deployable unit built via spring-boot-maven-plugin",
+      "No service discovery (no Eureka, Consul, or Kubernetes configs)",
+      "No API gateway detected",
+      "No message broker (no Kafka, RabbitMQ, or JMS in pom.xml or application.yaml)",
+      "No event-driven patterns (@EventHandler, @KafkaListener, etc.) in source code",
+      "@RestController exposes REST API (no Thymeleaf/JSP views — API-only)"
+    ],
+    "values": ["Layered Monolith", "REST API", "3-tier (Presentation / Business / Data)"],
+    "architecture_details": {
+      "pattern": "Layered Monolith",
+      "service_count": 1,
+      "has_service_discovery": false,
+      "has_api_gateway": false,
+      "has_message_broker": false,
+      "layers": ["Presentation (TodoController)", "Business (TodoService, OracleSqlDemonstrator)", "Data (TodoRepository, EntityManager, JdbcTemplate)", "Domain (TodoItem)"]
+    }
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:27:50Z"
+}

@@ -1,0 +1,27 @@
+{
+  "input_name": "Data Classification",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Internal / Public data only. The application manages Todo task items (title, description, priority, due date, completion status) which contain no PII, PHI, payment card data, or sensitive personal information. Data classification is Internal at most.",
+    "confidence": "high",
+    "evidence": [
+      "schema.sql: TODO_ITEMS table columns — ID, TITLE (VARCHAR2), DESCRIPTION (VARCHAR2), COMPLETED (NUMBER), PRIORITY (NUMBER), DUE_DATE (TIMESTAMP), CREATED_AT, UPDATED_AT",
+      "No email, phone, address, SSN, credit card, or health data fields in schema",
+      "No @PersonalData, @Confidential, or PII annotations found in Java source code",
+      "No encryption of stored data (no sensitive data requiring it)",
+      "data.sql sample data contains only generic task descriptions (no personal data)"
+    ],
+    "values": [
+      "Classification: Internal (task management data)",
+      "Data types: Task titles, descriptions, priorities, due dates, completion status",
+      "PII: None detected",
+      "PHI: None detected",
+      "PCI: None detected",
+      "Credentials risk: Database password hardcoded in application.yaml (Internal Confidential)"
+    ],
+    "script_output": { "classifications": ["Internal"] }
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:29:30Z"
+}

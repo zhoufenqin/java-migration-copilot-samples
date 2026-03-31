@@ -1,0 +1,19 @@
+{
+  "input_name": "Orchestration Tool",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container orchestration tool is used. The application is not containerized and is run directly via Maven. The only Docker usage documented is a plain 'docker run' command for the Oracle Database dependency, with no orchestration.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose.yml found",
+      "No Kubernetes manifests found (no k8s/ or manifests/ directories)",
+      "No Docker Swarm configuration found",
+      "No .github/workflows/ CI/CD files found",
+      "README.md uses bare 'docker run' command for Oracle DB — no orchestration layer"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:28:10Z"
+}

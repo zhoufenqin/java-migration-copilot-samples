@@ -1,0 +1,25 @@
+{
+  "task_id": "033",
+  "input_name": "Hardware Requirements",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No explicit hardware requirements documented. The application has no resource limits or requests defined (no docker-compose.yml or Kubernetes manifests). Based on the technology stack (Spring Boot 3.2 on Java 17 + Oracle XE), typical minimum requirements can be estimated.",
+    "confidence": "low",
+    "evidence": [
+      "No README hardware/system requirements section found",
+      "No docker-compose deploy.resources configuration",
+      "No Kubernetes resources.requests or resources.limits defined",
+      "Oracle XE 21c minimum requirements: 2GB RAM, 2 CPU cores, 12GB disk (per Oracle documentation)"
+    ],
+    "values": [
+      "Estimated RAM: 2GB minimum (1GB for Oracle XE + 512MB for Spring Boot JVM)",
+      "Estimated CPU: 2 cores (Oracle XE requirement)",
+      "Estimated Disk: 12GB minimum (Oracle XE data files + application)",
+      "Note: No explicit requirements documented — estimates only"
+    ],
+    "script_output": { "ram": null, "cpu": null, "disk": null }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:34:36Z"
+}

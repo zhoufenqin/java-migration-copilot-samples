@@ -1,0 +1,24 @@
+{
+  "input_name": "Communication Protocols",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application uses two communication protocols: HTTP/REST for client-facing API exposure (via Spring MVC) and JDBC over TCP for Oracle Database connectivity. No gRPC, message queues, WebSocket, or other inter-service protocols are used.",
+    "confidence": "high",
+    "evidence": [
+      "TodoController.java: @RestController and @RequestMapping(\"/api/todos\") — HTTP REST API on port 8080",
+      "TodoController.java: 13 REST endpoints mapped (GET, POST, PUT, DELETE)",
+      "application.yaml: spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1 — JDBC/TCP to Oracle",
+      "No *.proto files found (no gRPC)",
+      "No RabbitMQ, Kafka, or messaging dependencies in pom.xml",
+      "No WebSocket or TCP/UDP socket usage found in source code"
+    ],
+    "values": [
+      "HTTP/REST (inbound): Spring MVC @RestController, port 8080, base path /api/todos",
+      "JDBC/TCP (outbound): Oracle JDBC Thin driver, host localhost, port 1521, service XEPDB1",
+      "HTTP methods used: GET, POST, PUT, DELETE"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:27:40Z"
+}

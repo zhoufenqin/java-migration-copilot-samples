@@ -1,0 +1,27 @@
+{
+  "input_name": "Environment Variables",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No environment variables are configured via Dockerfile, docker-compose, Kubernetes, or .env files. All configuration is hardcoded in application.yaml, including database credentials. The Oracle Docker container uses one environment variable (ORACLE_PWD) passed via the docker run command in README.md.",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile found — no ENV instructions",
+      "No docker-compose.yml found — no environment section",
+      "No Kubernetes manifests found — no env/envFrom configuration",
+      "No .env or .env.example files found",
+      "application.yaml contains hardcoded values: datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1, datasource.username=system, datasource.password=oracle, server.port=8080",
+      "README.md Oracle docker run command uses: -e ORACLE_PWD=oracle"
+    ],
+    "values": [
+      "ORACLE_PWD=oracle (Oracle DB container only, from docker run command)",
+      "Hardcoded: spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1",
+      "Hardcoded: spring.datasource.username=system",
+      "Hardcoded: spring.datasource.password=oracle (sensitive — should be externalized)",
+      "Hardcoded: server.port=8080",
+      "Categories: database (connection, credentials)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:27:30Z"
+}

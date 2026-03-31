@@ -1,0 +1,29 @@
+{
+  "input_name": "Servlet Container",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Spring Boot 3.2.4 with embedded Tomcat 10.1.x (Servlet 6.0 / Jakarta EE 10). No external servlet container or container-specific configuration required — the application is self-contained and runs as an executable Spring Boot JAR.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml parent: spring-boot-starter-parent 3.2.4 — transitively includes tomcat-embed-core 10.1.x",
+      "pom.xml: spring-boot-starter-web dependency pulls in embedded Tomcat (default for Spring Boot)",
+      "spring-boot-maven-plugin configured — produces executable fat JAR with embedded Tomcat",
+      "No WEB-INF/web.xml or external deployment descriptor found",
+      "No container-specific configs (weblogic.xml, jboss-web.xml, etc.)",
+      "No explicit javax.servlet-api or jakarta.servlet-api dependency (managed via Spring Boot BOM)",
+      "TodoController uses @RestController (Spring MVC annotation-based config — no @WebServlet usage)",
+      "server.port=8080 in application.yaml confirms embedded container configuration"
+    ],
+    "values": [
+      "Servlet API: Jakarta Servlet 6.0 (Jakarta EE 10)",
+      "Embedded container: Apache Tomcat 10.1.x",
+      "Deployment model: Executable fat JAR with embedded Tomcat",
+      "No external container required",
+      "Custom servlets/filters: 0 (uses Spring MVC DispatcherServlet)",
+      "Container-specific features used: None"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:30:50Z"
+}
