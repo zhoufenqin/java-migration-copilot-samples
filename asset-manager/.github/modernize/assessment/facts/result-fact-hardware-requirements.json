@@ -1,0 +1,31 @@
+{
+  "task_id": "033",
+  "input_name": "Hardware Requirements",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No explicit hardware requirements are documented. The application does not specify minimum RAM, CPU, or disk requirements in README.md or any other documentation. No container resource limits are configured (no docker-compose.yml or Kubernetes manifests with resource specs). For local development, the prerequisite is JDK 8, Maven 3.6.0+, and Docker (for PostgreSQL and RabbitMQ containers). For production, Azure Container Apps uses default resource allocations (0.25 vCPU / 0.5Gi RAM per replica) with auto-scaling between 1-3 replicas.",
+    "confidence": "high",
+    "evidence": [
+      "analyze.sh: no hardware requirements found",
+      "No 'System Requirements' or 'Hardware Requirements' section in README.md",
+      "No docker-compose.yml or Kubernetes manifests with resource specifications",
+      "No --cpu or --memory flags in 'az containerapp create' commands",
+      "scripts/deploy-to-azure.sh: --min-replicas 1, --max-replicas 3 (no explicit resource limits)"
+    ],
+    "values": [
+      "Explicit requirements: none documented",
+      "Azure Container Apps default per replica: 0.25 vCPU, 0.5Gi RAM",
+      "Web module: 1-3 replicas (0.25-0.75 vCPU, 0.5-1.5Gi RAM total)",
+      "Worker module: 1-3 replicas (0.25-0.75 vCPU, 0.5-1.5Gi RAM total)",
+      "Local dev: Docker Desktop recommended (2+ CPU cores, 4GB+ RAM for PostgreSQL + RabbitMQ + Spring Boot apps)"
+    ],
+    "script_output": {
+      "ram": null,
+      "cpu": null,
+      "disk": null
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:41:00Z"
+}

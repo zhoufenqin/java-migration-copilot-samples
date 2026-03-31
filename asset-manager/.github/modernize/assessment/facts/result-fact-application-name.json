@@ -1,0 +1,26 @@
+{
+  "input_name": "Application Name",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application is named 'Asset Manager'. It is a multi-module Maven project with two sub-applications: 'assets-manager-web' (the web frontend) and 'assets-manager-worker' (the background image processing worker). The parent POM uses the artifact ID 'assets-manager-parent'. The Spring application name for the web module is 'assets-manager' and for the worker is 'assets-manager-worker'.",
+    "confidence": "high",
+    "evidence": [
+      "README.md line 1: '# Asset Manager'",
+      "asset-manager/pom.xml: <artifactId>assets-manager-parent</artifactId>",
+      "asset-manager/web/pom.xml: <artifactId>assets-manager-web</artifactId>, <name>assets-manager-web</name>",
+      "asset-manager/worker/pom.xml: <artifactId>assets-manager-worker</artifactId>, <name>assets-manager-worker</name>",
+      "web/application.properties: spring.application.name=assets-manager",
+      "worker/application.properties: spring.application.name=assets-manager-worker"
+    ],
+    "values": [
+      "Primary name: Asset Manager",
+      "Web module: assets-manager-web (spring.application.name=assets-manager)",
+      "Worker module: assets-manager-worker (spring.application.name=assets-manager-worker)",
+      "Maven groupId: com.microsoft.migration",
+      "Parent artifactId: assets-manager-parent"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:26:00Z"
+}

@@ -1,0 +1,36 @@
+{
+  "input_name": "Startup Instrumentation",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "The application uses SLF4J with Logback (Spring Boot default) for structured logging, with no telemetry/APM provider or AOP framework configured. The web module includes a custom MVC HandlerInterceptor (FileOperationLoggingInterceptor) for request-level logging of file operations. No explicit logging configuration file (logback-spring.xml) is present — Spring Boot defaults apply.",
+    "confidence": "medium",
+    "evidence": [
+      "No logback.xml, logback-spring.xml, or log4j2.xml found — Spring Boot default Logback configuration used",
+      "web/LocalFileStorageService.java: SLF4J Logger via LoggerFactory.getLogger() — structured logging for file operations",
+      "worker/LocalFileProcessingService.java: SLF4J Logger via LoggerFactory.getLogger() — structured logging in worker",
+      "web/WebMvcConfig.java: custom FileOperationLoggingInterceptor (HandlerInterceptorAdapter) — request-level instrumentation for file operation monitoring",
+      "No @Aspect, @Before, @Around annotations found — no Spring AOP",
+      "No micrometer, opentelemetry, application-insights, newrelic, or datadog dependencies in any pom.xml",
+      "Spring Boot 2.7.18 includes spring-boot-starter-logging (Logback + SLF4J) by default"
+    ],
+    "values": [
+      "Logging framework: SLF4J + Logback (via Spring Boot default)",
+      "Log configuration: none (Spring Boot default — console output)",
+      "Custom instrumentation: FileOperationLoggingInterceptor (request timing, file operation tracking)",
+      "Telemetry/APM: none configured",
+      "AOP framework: none",
+      "Startup entry points: AssetsManagerApplication.java, WorkerApplication.java"
+    ],
+    "instrumentation_details": {
+      "logging_framework": "SLF4J + Logback",
+      "logging_version": "included via Spring Boot 2.7.18",
+      "log_sinks": ["Console (default)"],
+      "telemetry_provider": "none",
+      "aop_framework": "none",
+      "startup_file": "AssetsManagerApplication.java, WorkerApplication.java"
+    }
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:44:00Z"
+}

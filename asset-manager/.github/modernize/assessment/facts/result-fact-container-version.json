@@ -1,0 +1,23 @@
+{
+  "input_name": "Container Version",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No explicit Docker version requirement is specified in the project. The README references Docker Desktop without pinning a version. No docker-compose.yml, CI/CD workflows, or version-specific Docker features are present in the asset-manager directory. The use of 'az acr build' in the deploy script (which uses Azure Container Registry remote build) implies any modern Docker CLI compatible with Azure CLI is sufficient.",
+    "confidence": "low",
+    "evidence": [
+      "README.md line 131: 'Docker (https://docs.docker.com/desktop/): Required for running the application locally' — no version pinned",
+      "No docker-compose.yml found — no Compose version field to inspect",
+      "No CI/CD workflow files found under asset-manager/.github/workflows/",
+      "scripts/deploy-to-azure.sh uses 'az acr build' (remote ACR build), not local Docker daemon — no local Docker version requirement enforced"
+    ],
+    "values": [
+      "Engine: Docker",
+      "Version requirement: Not explicitly specified",
+      "Minimum implied: Any Docker Desktop version supporting 'docker run' (19.03+)",
+      "No Docker Compose version specified (no docker-compose.yml present)"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:24:00Z"
+}

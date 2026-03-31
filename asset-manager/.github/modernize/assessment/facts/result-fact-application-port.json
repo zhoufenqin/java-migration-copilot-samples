@@ -1,0 +1,24 @@
+{
+  "input_name": "Application Port",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The web module exposes port 8080 (HTTP), consistent across the generated Dockerfile (EXPOSE 8080) and the Azure Container Apps deployment configuration (--target-port 8080). The worker module is a background service with no network port exposed. No server.port property is set in application.properties, so Spring Boot uses its default of 8080.",
+    "confidence": "high",
+    "evidence": [
+      "scripts/deploy-to-azure.sh line 276: 'EXPOSE 8080' in generated web/Dockerfile",
+      "scripts/deploy-to-azure.sh line 332: '--target-port 8080' in Azure Container App creation for web module",
+      "worker/Dockerfile (generated): no EXPOSE instruction — background service with no HTTP port",
+      "web/application.properties: no 'server.port' override — Spring Boot default port 8080 applies",
+      "No docker-compose.yml or Kubernetes manifests present"
+    ],
+    "values": [
+      "Web module: port 8080 (HTTP, Spring Boot default)",
+      "Worker module: no port exposed (background AMQP consumer)",
+      "Protocol: HTTP",
+      "Azure Container Apps target-port: 8080 (external ingress)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:27:00Z"
+}

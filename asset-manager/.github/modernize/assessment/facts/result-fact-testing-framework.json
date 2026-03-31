@@ -1,0 +1,27 @@
+{
+  "task_id": "003",
+  "input_name": "Testing Framework",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "JUnit 5 (Jupiter) and Mockito are used for unit testing, provided via spring-boot-starter-test. Only 1 test class exists (S3FileProcessingServiceTest in the worker module). The web module has no test classes. Overall test coverage is minimal.",
+    "confidence": "high",
+    "evidence": [
+      "worker/pom.xml: spring-boot-starter-test (test scope) includes JUnit 5 Jupiter + Mockito",
+      "web/pom.xml: spring-boot-starter-test (test scope) — no test classes use it",
+      "worker/src/test/.../S3FileProcessingServiceTest.java: uses @ExtendWith(MockitoExtension.class), @Test, @Mock, @InjectMocks from JUnit 5 + Mockito",
+      "analyze.sh: 1 test file found, no frameworks detected (script may not parse jupiter annotations)"
+    ],
+    "values": [
+      "JUnit 5 (JUnit Jupiter) — via spring-boot-starter-test",
+      "Mockito with MockitoExtension — for mocking S3Client, ImageMetadataRepository",
+      "Spring Test utilities (ReflectionTestUtils)"
+    ],
+    "script_output": {
+      "frameworks_detected": ["JUnit 5", "Mockito"],
+      "test_files_count": 1
+    }
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:45:30Z"
+}

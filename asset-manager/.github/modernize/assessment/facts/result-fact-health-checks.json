@@ -1,0 +1,23 @@
+{
+  "task_id": "025",
+  "input_name": "Health Checks",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No health checks are configured anywhere in the project. There is no HEALTHCHECK instruction in the Dockerfiles (generated at deploy time), no docker-compose healthcheck sections, no Kubernetes liveness/readiness probes, and no Spring Boot Actuator dependency in either module's pom.xml. No health endpoint code exists in the application source. This is a gap for cloud-native deployment readiness.",
+    "confidence": "high",
+    "evidence": [
+      "analyze.sh returned: no health checks found",
+      "No HEALTHCHECK instruction in generated Dockerfiles (scripts/deploy-to-azure.sh)",
+      "No docker-compose.yml or Kubernetes manifests present",
+      "spring-boot-starter-actuator not present in web/pom.xml or worker/pom.xml",
+      "No /health, /actuator/health, /healthz or /ready endpoints found in source code"
+    ],
+    "values": [],
+    "script_output": {
+      "health_checks": []
+    }
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-03-31T06:28:30Z"
+}

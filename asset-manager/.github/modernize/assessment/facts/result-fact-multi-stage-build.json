@@ -1,0 +1,23 @@
+{
+  "task_id": "013",
+  "input_name": "Multi-stage Build",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No Dockerfile found in the repository. Dockerfiles are generated at deploy time by scripts/deploy-to-azure.sh and use a single-stage build (one FROM instruction per module). No multi-stage build pattern is in use.",
+    "confidence": "high",
+    "evidence": [
+      "analyze.sh found 0 Dockerfiles in asset-manager directory tree",
+      "scripts/deploy-to-azure.sh generates single-stage Dockerfiles (one FROM per module) at deployment time",
+      "Web Dockerfile: FROM eclipse-temurin:21-jre-alpine (single stage, no AS alias)",
+      "Worker Dockerfile: FROM eclipse-temurin:21-jre-alpine (single stage, no AS alias)"
+    ],
+    "values": [],
+    "script_output": {
+      "dockerfiles_found": 0,
+      "multi_stage_builds": 0
+    }
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-03-31T06:23:30Z"
+}

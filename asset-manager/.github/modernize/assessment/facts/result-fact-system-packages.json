@@ -1,0 +1,23 @@
+{
+  "input_name": "System Packages",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No system packages are installed in the container images. The generated Dockerfiles (web and worker) contain no RUN instructions with package manager commands. The base image eclipse-temurin:21-jre-alpine provides only the Alpine Linux JRE environment. Any packages included come from the base image itself (Alpine Linux minimal packages + Eclipse Temurin JRE).",
+    "confidence": "high",
+    "evidence": [
+      "No apt-get, apt, apk add, yum install, or dnf install commands in generated Dockerfiles",
+      "Generated Dockerfile instructions: FROM, WORKDIR, COPY, EXPOSE, ENTRYPOINT only (no RUN)",
+      "scripts/deploy-to-azure.sh generates Dockerfiles without any RUN package installation steps",
+      "Base image eclipse-temurin:21-jre-alpine includes only Alpine minimal packages + Eclipse Temurin JRE"
+    ],
+    "values": [
+      "No additional system packages installed",
+      "Base image packages only: Alpine Linux minimal (busybox, musl libc) + Eclipse Temurin JRE 21",
+      "Package manager: apk (Alpine) — not used in Dockerfile",
+      "No web servers, SSL certs, database clients, or build tools added"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:46:00Z"
+}

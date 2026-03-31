@@ -1,0 +1,20 @@
+{
+  "input_name": "Embedded Language Usage",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No embedded language usage detected. The application is a pure Java implementation using Spring Boot with no external process execution, scripting engines, embedded interpreters, native library loading, or dynamic script evaluation.",
+    "confidence": "high",
+    "evidence": [
+      "No Runtime.getRuntime().exec() or ProcessBuilder usage found in source code",
+      "No ScriptEngineManager, GroovyShell, PythonInterpreter, JRuby, or Jython usage found",
+      "No System.loadLibrary() or JNI/JNA native library loading found",
+      "No groovy, jython, jruby, nashorn, graalvm, or jna dependencies in any pom.xml",
+      "No embedded script files (.js, .py, .groovy, .lua) in resources directories",
+      "SQL access via Spring Data JPA/Hibernate ORM (PreparedStatement only, no dynamic SQL)"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:45:00Z"
+}

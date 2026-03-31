@@ -1,0 +1,22 @@
+{
+  "input_name": "Container Engine",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Docker is the container engine used for both local development and deployment. Docker CLI commands are used in build scripts to run infrastructure containers, and Dockerfiles are dynamically created by the deployment script and pushed to Azure Container Registry.",
+    "confidence": "high",
+    "evidence": [
+      "scripts/startapp.sh: uses 'docker run' to start PostgreSQL and RabbitMQ containers",
+      "scripts/stopapp.sh: uses 'docker stop' and 'docker rm' to remove containers",
+      "scripts/deploy-to-azure.sh: dynamically generates Dockerfiles for web and worker modules, uses Azure Container Registry (ACR)",
+      "README.md: lists Docker as a required prerequisite and describes containerization as a workshop step"
+    ],
+    "values": [
+      "Docker",
+      "Azure Container Registry (ACR) used for image hosting",
+      "No docker-compose.yml present; infrastructure containers started via individual docker run commands"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:20:00Z"
+}

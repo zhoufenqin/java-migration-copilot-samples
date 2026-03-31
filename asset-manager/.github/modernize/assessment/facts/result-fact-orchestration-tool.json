@@ -1,0 +1,25 @@
+{
+  "input_name": "Orchestration Tool",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No container orchestration files (docker-compose.yml, Kubernetes manifests, Helm charts) exist in the repository. For production deployment, the deploy script (scripts/deploy-to-azure.sh) provisions and deploys both the web and worker modules to Azure Container Apps using the Azure CLI ('az containerapp create'), with Azure Container Registry for image hosting. For local development, infrastructure services (PostgreSQL, RabbitMQ) are started individually using 'docker run' commands in scripts/startapp.sh.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose*.yml found in asset-manager directory tree",
+      "No Kubernetes manifests (kind: Deployment, kind: Service) found",
+      "No Docker Swarm config found",
+      "scripts/deploy-to-azure.sh: uses 'az containerapp create' for web and worker deployment to Azure Container Apps",
+      "scripts/deploy-to-azure.sh: uses 'az containerapp env create' for Container Apps environment",
+      "scripts/startapp.sh: uses individual 'docker run' commands for local infrastructure (PostgreSQL, RabbitMQ)"
+    ],
+    "values": [
+      "Production: Azure Container Apps (via Azure CLI)",
+      "Local development: individual 'docker run' commands (no Compose)",
+      "Image registry: Azure Container Registry (ACR)",
+      "No Kubernetes, Docker Compose, or Docker Swarm orchestration"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:32:00Z"
+}
