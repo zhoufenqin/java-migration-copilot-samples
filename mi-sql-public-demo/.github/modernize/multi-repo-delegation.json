@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "createdAt": "2026-03-31T06:15:57.9984742Z",
+  "status": "in_progress",
+  "repos": [
+    {
+      "name": "java-migration-copilot-samples.mi-sql-public-demo",
+      "url": "https://github.com/zhoufenqin/java-migration-copilot-samples",
+      "clonePath": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\mi-sql-public-demo",
+      "statusFileDirectory": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\.github\\modernize\\delegation\\mi-sql-public-demo",
+      "sessionId": "2ef59eb1-d6b9-47de-805b-d4601684ca8f",
+      "detectedLanguage": "Java",
+      "relativePath": "mi-sql-public-demo"
+    }
+  ]
+}
