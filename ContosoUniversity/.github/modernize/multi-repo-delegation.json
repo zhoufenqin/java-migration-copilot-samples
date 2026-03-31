@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "createdAt": "2026-03-31T06:15:33.8104069Z",
+  "status": "in_progress",
+  "repos": [
+    {
+      "name": "java-migration-copilot-samples.ContosoUniversity",
+      "url": "https://github.com/zhoufenqin/java-migration-copilot-samples",
+      "clonePath": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\ContosoUniversity",
+      "statusFileDirectory": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\.github\\modernize\\delegation\\ContosoUniversity",
+      "sessionId": "f46f7309-a47e-4128-8e92-4c27bd3f9246",
+      "detectedLanguage": "DotNet",
+      "relativePath": "ContosoUniversity"
+    }
+  ]
+}
