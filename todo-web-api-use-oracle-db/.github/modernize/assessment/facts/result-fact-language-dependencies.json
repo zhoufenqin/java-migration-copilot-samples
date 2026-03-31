@@ -1,0 +1,29 @@
+{
+  "input_name": "Language Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "6 runtime/compile Maven dependencies declared in pom.xml (plus 1 test-scope dependency), all version-managed by the Spring Boot 3.2.4 parent BOM. No Dockerfile dependency COPY or install commands exist as the application is not containerized.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml found at project root — the sole dependency manifest",
+      "No Dockerfile COPY or RUN mvn commands (application not containerized)",
+      "Parent BOM: org.springframework.boot:spring-boot-starter-parent:3.2.4 manages all versions",
+      "6 compile/runtime dependencies + 1 test dependency declared"
+    ],
+    "values": [
+      "Dependency file: pom.xml (Maven)",
+      "Compile/runtime dependencies: 6",
+      "Key dependencies:",
+      "  - spring-boot-starter-web (compile) — HTTP REST API",
+      "  - spring-boot-starter-data-jpa (compile) — ORM/data access",
+      "  - com.oracle.database.jdbc:ojdbc11 (runtime) — Oracle DB driver",
+      "  - spring-boot-starter-validation (compile) — bean validation",
+      "  - org.projectlombok:lombok (optional/compile) — boilerplate reduction",
+      "  - spring-boot-devtools (runtime/optional) — hot reload",
+      "  - spring-boot-starter-test (test scope — excluded from runtime)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:30:40Z"
+}

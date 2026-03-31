@@ -1,0 +1,32 @@
+{
+  "input_name": "Startup Instrumentation",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "SLF4J with Logback (Spring Boot default) for logging only. No telemetry/APM tools or AOP frameworks are configured.",
+    "confidence": "high",
+    "evidence": [
+      "OracleSqlDemonstrator.java uses Lombok @Slf4j annotation (generates SLF4J Logger field at compile time)",
+      "spring-boot-starter-web and spring-boot-starter-data-jpa transitively include spring-boot-starter-logging → Logback 1.4.x",
+      "No logback.xml or logback-spring.xml found — uses Spring Boot default Logback configuration (console output)",
+      "No Application Insights, OpenTelemetry, Datadog, New Relic, or Elastic APM dependencies in pom.xml",
+      "No @Aspect, @Before, @After, or @Around AOP annotations found in source code",
+      "No spring-boot-starter-actuator dependency (no Micrometer metrics)"
+    ],
+    "values": [
+      "SLF4J (via Lombok @Slf4j annotation in OracleSqlDemonstrator.java)",
+      "Logback (Spring Boot default — no explicit config)",
+      "Log output: console (default Spring Boot format)"
+    ],
+    "instrumentation_details": {
+      "logging_framework": "SLF4J + Logback",
+      "logging_version": "Logback 1.4.x (managed by Spring Boot 3.2.4 BOM)",
+      "log_sinks": ["Console (default)"],
+      "telemetry_provider": null,
+      "aop_framework": null,
+      "startup_file": "TodoApplication.java"
+    }
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:30:10Z"
+}

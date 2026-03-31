@@ -1,0 +1,22 @@
+{
+  "input_name": "Container Engine",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Docker is used as the container engine, specifically for running the Oracle Database XE container. No Dockerfile or docker-compose.yml is present for the application itself; Docker is referenced only as a prerequisite for the Oracle database dependency.",
+    "confidence": "medium",
+    "evidence": [
+      "README.md documents 'docker run' command to start Oracle Database XE container: 'docker run -d --name oracle-xe -p 1521:1521 -e ORACLE_PWD=oracle container-registry.oracle.com/database/express:latest'",
+      "README.md lists Docker as a prerequisite: 'Docker (for running Oracle database container)'",
+      "No Dockerfile, Containerfile, or docker-compose.yml found for the application itself",
+      "No CI/CD workflow files found in .github/workflows/"
+    ],
+    "values": [
+      "Docker",
+      "Used for Oracle Database XE container only (not for the application itself)",
+      "Image: container-registry.oracle.com/database/express:latest"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:26:00Z"
+}

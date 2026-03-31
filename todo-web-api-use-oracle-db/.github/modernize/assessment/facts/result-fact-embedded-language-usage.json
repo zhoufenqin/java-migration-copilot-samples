@@ -1,0 +1,26 @@
+{
+  "input_name": "Embedded Language Usage",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No scripting engine or external language interpreter usage detected. The application executes Oracle-specific SQL and PL/SQL via standard JDBC (PreparedStatement, JdbcTemplate) and JPA native queries — this is SQL execution within the Java runtime, not an embedded external language interpreter.",
+    "confidence": "high",
+    "evidence": [
+      "No ScriptEngineManager, GroovyShell, or scripting engine usage found in any Java source file",
+      "No ProcessBuilder or Runtime.getRuntime().exec() process execution found",
+      "No System.loadLibrary() or JNI/JNA native code loading found",
+      "OracleSqlDemonstrator.java uses PreparedStatement (standard JDBC) for raw Oracle SQL — not a scripting engine",
+      "TodoService.java uses EntityManager.createNativeQuery() for Oracle PL/SQL blocks — standard JPA native query execution",
+      "No .groovy, .js, .py, or .lua script files found in resources/",
+      "No groovy, jython, nashorn, or GraalVM scripting dependencies in pom.xml"
+    ],
+    "values": [
+      "Oracle SQL and PL/SQL executed via JDBC PreparedStatement (standard, not embedded interpreter)",
+      "No scripting engines: Groovy, Nashorn, Jython, JRuby — None",
+      "No native library loading (JNI/JNA) — None",
+      "No external process execution — None"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:30:20Z"
+}

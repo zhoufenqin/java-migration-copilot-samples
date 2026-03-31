@@ -1,0 +1,27 @@
+{
+  "input_name": "External Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "One external system dependency: Oracle Database 21c XE. No other external services (no Redis, LDAP, S3, message queues, or external APIs) are required.",
+    "confidence": "high",
+    "evidence": [
+      "application.yaml: spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1",
+      "application.yaml: spring.datasource.username=system, spring.datasource.password=oracle (hardcoded credentials)",
+      "application.yaml: spring.datasource.driver-class-name=oracle.jdbc.OracleDriver",
+      "pom.xml: com.oracle.database.jdbc:ojdbc11 (runtime scope)",
+      "README.md Prerequisites: 'Docker (for running Oracle database container)' — Oracle Database 21c XE",
+      "README.md: docker run command using container-registry.oracle.com/database/express:latest",
+      "No Redis, Kafka, RabbitMQ, LDAP, S3, or Azure Blob dependencies found"
+    ],
+    "values": [
+      "Oracle Database 21c XE — relational database (primary data store)",
+      "Host: localhost, Port: 1521, Service Name: XEPDB1",
+      "Authentication: username=system, password=oracle (hardcoded — security concern)",
+      "JDBC driver: ojdbc11 (Oracle JDBC Thin driver)",
+      "Total external dependencies: 1"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:29:00Z"
+}

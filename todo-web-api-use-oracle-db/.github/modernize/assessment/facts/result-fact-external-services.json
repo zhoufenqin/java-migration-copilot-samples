@@ -1,0 +1,28 @@
+{
+  "task_id": "019",
+  "input_name": "External Services",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Oracle Database XE (1 external service). The automated script did not detect it as Oracle is not in its standard service list; LLM analysis confirms it from application.yaml and README.md.",
+    "confidence": "high",
+    "evidence": [
+      "application.yaml: spring.datasource.url=jdbc:oracle:thin:@localhost:1521/XEPDB1",
+      "application.yaml: spring.datasource.driver-class-name=oracle.jdbc.OracleDriver",
+      "pom.xml: com.oracle.database.jdbc:ojdbc11 (runtime dependency)",
+      "README.md: 'docker run ... container-registry.oracle.com/database/express:latest' for Oracle XE setup"
+    ],
+    "values": [
+      "Oracle Database XE (Express Edition)",
+      "Host: localhost, Port: 1521, Service: XEPDB1",
+      "Version: Oracle Database 21c XE (per README.md)",
+      "Connection: JDBC Thin driver (ojdbc11)"
+    ],
+    "script_output": {
+      "services": ["Oracle Database"],
+      "count": 1
+    }
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:28:50Z"
+}

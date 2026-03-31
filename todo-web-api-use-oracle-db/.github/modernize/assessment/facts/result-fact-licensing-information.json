@@ -1,0 +1,26 @@
+{
+  "input_name": "Licensing Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "MIT License — Copyright (c) Microsoft Corporation. The repository root LICENSE.md applies to the entire repository including the todo-web-api-use-oracle-db sub-project. No license file exists within the sub-project itself. Key dependency licenses: Spring Boot (Apache 2.0), Oracle JDBC (OTN License — commercial use restrictions apply), Lombok (MIT).",
+    "confidence": "high",
+    "evidence": [
+      "Repository root LICENSE.md: MIT License, Copyright (c) Microsoft Corporation",
+      "No LICENSE file found within todo-web-api-use-oracle-db/ sub-directory",
+      "pom.xml: No <licenses> section declared",
+      "Dependency: com.oracle.database.jdbc:ojdbc11 — subject to Oracle Technology Network License Agreement (commercial use may require Oracle subscription)",
+      "Dependency: spring-boot-starter-parent 3.2.4 — Apache License 2.0",
+      "Dependency: org.projectlombok:lombok — MIT License"
+    ],
+    "values": [
+      "Primary application license: MIT (Copyright Microsoft Corporation)",
+      "Spring Boot framework: Apache License 2.0",
+      "Oracle JDBC (ojdbc11): Oracle Technology Network License — note commercial use restrictions",
+      "Lombok: MIT License",
+      "License compatibility: MIT and Apache 2.0 are compatible; Oracle JDBC requires separate evaluation"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:29:20Z"
+}

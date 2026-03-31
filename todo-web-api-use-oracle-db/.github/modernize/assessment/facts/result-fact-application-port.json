@@ -1,0 +1,23 @@
+{
+  "input_name": "Application Port",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application listens on port 8080 (HTTP) as configured in application.yaml. No Dockerfile, docker-compose.yml, or Kubernetes manifests exist to declare container-level port exposure.",
+    "confidence": "high",
+    "evidence": [
+      "src/main/resources/application.yaml: 'server:\\n  port: 8080'",
+      "README.md curl examples use http://localhost:8080/api/todos",
+      "No Dockerfile EXPOSE instruction found",
+      "No docker-compose ports section found",
+      "No Kubernetes containerPort configuration found"
+    ],
+    "values": [
+      "Port: 8080",
+      "Protocol: HTTP",
+      "Base URL: http://localhost:8080/api/todos"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:27:20Z"
+}

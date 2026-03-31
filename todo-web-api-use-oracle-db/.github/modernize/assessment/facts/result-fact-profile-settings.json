@@ -1,0 +1,26 @@
+{
+  "input_name": "Profile Settings",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No environment-specific Spring profiles are configured. The application uses a single application.yaml with hardcoded configuration for all environments. No profile-specific config files, @Profile annotations, or Maven profiles exist.",
+    "confidence": "high",
+    "evidence": [
+      "Only one config file found: src/main/resources/application.yaml (no application-dev.yml, application-prod.yml, etc.)",
+      "No spring.profiles.active property set in application.yaml",
+      "No @Profile annotations found in any Java source files",
+      "No Maven <profiles> section in pom.xml",
+      "No SPRING_PROFILES_ACTIVE environment variable configuration in any file",
+      "application.yaml contains hardcoded database credentials and connection URL — no profile-based overrides"
+    ],
+    "values": [
+      "Profiles: None defined (single configuration model)",
+      "Active profile: default (Spring Boot default)",
+      "Config files: 1 (application.yaml only)",
+      "Profile-annotated components: 0",
+      "Environment differentiation: None — all settings hardcoded"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:29:50Z"
+}

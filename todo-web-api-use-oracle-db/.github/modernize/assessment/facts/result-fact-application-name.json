@@ -1,0 +1,24 @@
+{
+  "input_name": "Application Name",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application name is 'todo-web-api-use-oracle-db', consistently identified across the Maven build file and README title.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml <artifactId>: todo-web-api-use-oracle-db",
+      "pom.xml <name>: todo-web-api-use-oracle-db",
+      "pom.xml <description>: Todo Web API using Oracle Database",
+      "README.md title: '# Todo Web API with Oracle Database'",
+      "No spring.application.name property found in application.yaml"
+    ],
+    "values": [
+      "todo-web-api-use-oracle-db",
+      "Todo Web API with Oracle Database (human-readable display name)",
+      "Group ID: com.microsoft.migration",
+      "Artifact version: 0.0.1-SNAPSHOT"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:27:10Z"
+}
