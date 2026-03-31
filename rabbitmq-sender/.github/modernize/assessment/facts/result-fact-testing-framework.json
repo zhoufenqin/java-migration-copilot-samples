@@ -1,0 +1,26 @@
+{
+  "input_name": "Testing Framework",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No tests are implemented in this project. While spring-boot-starter-test (which bundles JUnit 5, Mockito, and AssertJ) is declared as a test-scoped dependency in pom.xml, no test source files exist under src/test/. The project has no test coverage.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml: spring-boot-starter-test (test scope) declared — provides JUnit 5, Mockito, AssertJ",
+      "No files found under src/test/ directory",
+      "0 test classes detected"
+    ],
+    "values": [
+      "Test dependency available: JUnit 5 (via spring-boot-starter-test)",
+      "Test dependency available: Mockito (via spring-boot-starter-test)",
+      "Test dependency available: AssertJ (via spring-boot-starter-test)",
+      "Test files implemented: 0"
+    ],
+    "script_output": {
+      "frameworks_detected": [],
+      "test_files_count": 0
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:35:10Z"
+}

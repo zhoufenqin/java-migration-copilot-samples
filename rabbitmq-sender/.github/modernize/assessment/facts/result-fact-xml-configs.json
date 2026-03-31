@@ -1,0 +1,25 @@
+{
+  "input_name": "XML Configs",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No XML configuration files detected. The rabbitmq-sender is a modern Spring Boot 3.3.0 application that uses exclusively annotation-based configuration (@SpringBootApplication, @Bean, @Component) and application.properties — no Spring XML contexts, Hibernate mapping files, web.xml, or other XML-based configurations are present.",
+    "confidence": "high",
+    "evidence": [
+      "No applicationContext*.xml, spring-*.xml, or *-context.xml files found",
+      "No hibernate.cfg.xml or *.hbm.xml Hibernate mapping files found",
+      "No web.xml or persistence.xml Java EE deployment descriptors found",
+      "No log4j.xml or logback.xml logging configuration files found",
+      "Only pom.xml (Maven build descriptor) exists as an XML file",
+      "Application uses @SpringBootApplication and @Bean annotations for all configuration",
+      "Runtime configuration via application.properties (properties format, not XML)"
+    ],
+    "values": [
+      "No framework XML configuration files (Spring Boot annotation-based config)",
+      "pom.xml only (Maven build descriptor, not application config)",
+      "0 XML configuration files in application code"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:32:00Z"
+}

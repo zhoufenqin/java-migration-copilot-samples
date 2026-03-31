@@ -1,0 +1,26 @@
+{
+  "input_name": "Language Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Java Maven project with 4 runtime/provided dependencies declared in pom.xml. No Dockerfile exists so dependencies are not containerized, but they are managed by Maven and will be bundled into the Spring Boot fat JAR at build time.",
+    "confidence": "high",
+    "evidence": [
+      "Dependency file: rabbitmq-sender/pom.xml (Maven)",
+      "No Dockerfile with COPY pom.xml or RUN mvn install",
+      "BOM: spring-cloud-azure-dependencies:5.14.0 (manages Azure Spring Cloud versions)",
+      "Parent BOM: spring-boot-starter-parent:3.3.0 (manages Spring Boot dependency versions)"
+    ],
+    "values": [
+      "pom.xml (Maven dependency descriptor)",
+      "4 runtime/provided dependencies (excluding test scope)",
+      "com.azure.spring:spring-cloud-azure-starter (BOM-managed)",
+      "com.azure.spring:spring-messaging-azure-servicebus (BOM-managed)",
+      "org.projectlombok:lombok:1.18.24 (provided)",
+      "com.fasterxml.jackson.core:jackson-databind (BOM-managed)",
+      "1 test dependency: spring-boot-starter-test (test scope, excluded from JAR)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:32:40Z"
+}

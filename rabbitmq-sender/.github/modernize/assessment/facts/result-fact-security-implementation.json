@@ -1,0 +1,27 @@
+{
+  "input_name": "Security Implementation",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Security is implemented through Azure Managed Identity for passwordless authentication to Azure Service Bus. The Azure Spring Cloud SDK handles TLS encryption in transit automatically. No application-level HTTP security (Spring Security, JWT, OAuth2, CORS, HTTPS termination) is implemented, as the application has no inbound web endpoints.",
+    "confidence": "high",
+    "evidence": [
+      "application.properties: spring.cloud.azure.credential.managed-identity-enabled=true — uses Azure Managed Identity (no stored secrets/passwords)",
+      "application.properties: spring.cloud.azure.credential.client-id= — user-assigned Managed Identity support",
+      "spring-cloud-azure-starter provides Azure AD token acquisition via Managed Identity",
+      "Azure Service Bus SDK enforces TLS 1.2+ for all AMQP 1.0 connections (transport-level encryption)",
+      "No spring-boot-starter-security dependency in pom.xml",
+      "No JWT, OAuth2, Basic Auth, or API key implementation in source code",
+      "No CORS, HSTS, CSP, or security headers (no HTTP server present)",
+      "No encryption code (AES/RSA) found in application source"
+    ],
+    "values": [
+      "Authentication: Azure Managed Identity (passwordless, token-based)",
+      "Transport encryption: TLS 1.2+ enforced by Azure Service Bus SDK",
+      "No credentials stored in source code or configuration",
+      "No HTTP security layer (no inbound web endpoints)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:31:20Z"
+}

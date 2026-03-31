@@ -1,0 +1,26 @@
+{
+  "input_name": "External Services",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Azure Service Bus is the sole external service dependency. The application connects to an Azure Service Bus namespace (configured via spring.cloud.azure.servicebus.namespace) and sends messages to two queues (queue1, queue2). Authentication is via Azure Managed Identity. No databases, Redis, or other external services are used.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml: spring-messaging-azure-servicebus dependency (Azure Spring Cloud SDK)",
+      "pom.xml: spring-cloud-azure-starter dependency",
+      "application.properties: spring.cloud.azure.servicebus.entity-type=queue",
+      "application.properties: spring.cloud.azure.servicebus.namespace= (configured at runtime)",
+      "application.properties: spring.cloud.azure.credential.managed-identity-enabled=true",
+      "MessagingRabbitmqApplication.java: ServiceBusAdministrationClient creates/manages queue1 and queue2",
+      "Producer.java: ServiceBusTemplate.send() publishes to queue1 and queue2"
+    ],
+    "values": [
+      "Azure Service Bus (AMQP 1.0, cloud-managed message broker)",
+      "Queues: queue1, queue2",
+      "Authentication: Azure Managed Identity",
+      "Count: 1 external service"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:31:00Z"
+}

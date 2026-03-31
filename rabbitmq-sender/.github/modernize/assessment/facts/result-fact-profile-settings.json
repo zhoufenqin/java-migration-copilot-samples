@@ -1,0 +1,24 @@
+{
+  "input_name": "Profile Settings",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No profile-based configuration detected. The rabbitmq-sender uses a single application.properties file with no environment-specific variants, no @Profile annotations in code, and no Maven build profiles. This is consistent with a demo/sample application that relies on runtime environment variable overrides rather than profile switching.",
+    "confidence": "high",
+    "evidence": [
+      "Only one config file found: src/main/resources/application.properties",
+      "No application-dev.properties, application-test.properties, application-prod.properties found",
+      "No @Profile or @ConditionalOnProfile annotations found in source code",
+      "No spring.profiles.active setting in application.properties",
+      "No <profiles> section found in pom.xml",
+      "No docker-compose environment variants or Kubernetes ConfigMap per-environment found"
+    ],
+    "values": [
+      "Single configuration model (no environment profiles)",
+      "Runtime configuration via blank property values (namespace, client-id) injected at deploy time",
+      "No profile-specific files"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:31:50Z"
+}

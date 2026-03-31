@@ -1,0 +1,26 @@
+{
+  "input_name": "Environment Variables",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No explicit ENV instructions or .env files are present. Configuration is provided through Spring Boot's application.properties with blank values for Azure Service Bus namespace and client ID, indicating these must be supplied at runtime via environment variables or external configuration (e.g., SPRING_CLOUD_AZURE_SERVICEBUS_NAMESPACE, SPRING_CLOUD_AZURE_CREDENTIAL_CLIENT_ID).",
+    "confidence": "medium",
+    "evidence": [
+      "No Dockerfile ENV instructions (no Dockerfile exists)",
+      "No docker-compose environment section found",
+      "No Kubernetes env/envFrom/ConfigMap references found",
+      "No .env or .env.example files found",
+      "application.properties has blank values: spring.cloud.azure.servicebus.namespace= and spring.cloud.azure.credential.client-id=",
+      "spring.cloud.azure.credential.managed-identity-enabled=true — Managed Identity avoids need for explicit credentials"
+    ],
+    "values": [
+      "SPRING_CLOUD_AZURE_SERVICEBUS_NAMESPACE (required — Azure Service Bus namespace, currently blank)",
+      "SPRING_CLOUD_AZURE_CREDENTIAL_CLIENT_ID (optional — Managed Identity client ID, currently blank)",
+      "SPRING_CLOUD_AZURE_CREDENTIAL_MANAGED_IDENTITY_ENABLED=true (configured in properties)",
+      "SPRING_CLOUD_AZURE_SERVICEBUS_ENTITY_TYPE=queue (configured in properties)",
+      "Category: Azure Cloud configuration"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:26:20Z"
+}

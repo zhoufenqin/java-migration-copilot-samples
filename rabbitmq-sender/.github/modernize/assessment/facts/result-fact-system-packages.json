@@ -1,0 +1,18 @@
+{
+  "input_name": "System Packages",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No system packages analysis possible. The rabbitmq-sender project has no Dockerfile or Containerfile, so no OS-level package installation commands (apt-get, apk, yum) are present.",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile found under rabbitmq-sender/",
+      "No Containerfile found under rabbitmq-sender/",
+      "No container build configuration exists",
+      "Application runs as a plain JVM process — OS packages managed by the host environment"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:32:30Z"
+}

@@ -1,0 +1,18 @@
+{
+  "input_name": "Resource Limits",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No CPU or memory resource limits are configured. The rabbitmq-sender project has no Docker Compose deploy.resources section, Kubernetes resource limits/requests, or ResourceQuota definitions.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose.yml files found",
+      "No Kubernetes manifests found",
+      "No container orchestration layer configured",
+      "Application runs as a plain JVM process with no containerization"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:27:20Z"
+}

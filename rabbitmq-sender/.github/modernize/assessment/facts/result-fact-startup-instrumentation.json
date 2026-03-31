@@ -1,0 +1,32 @@
+{
+  "input_name": "Startup Instrumentation",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "Minimal instrumentation — no structured logging framework, no APM/telemetry, and no AOP configured. The application uses System.out.println() for basic console output. Spring Boot 3.3.0 includes SLF4J/Logback on the classpath (via spring-boot-starter) but no logging configuration or logger instances are explicitly initialized.",
+    "confidence": "high",
+    "evidence": [
+      "Producer.java line 21: System.out.println('Sending message...'+i) — plain console output only",
+      "No logback.xml, logback-spring.xml, or log4j2.xml configuration files found",
+      "No LoggerFactory.getLogger() or LogManager.getLogger() calls in source code",
+      "No micrometer, opentelemetry, applicationinsights, or APM dependencies in pom.xml",
+      "No @Aspect, @Before, @After, @Around AOP annotations found",
+      "No spring-boot-starter-actuator dependency (no health/metrics endpoints)",
+      "SLF4J/Logback available on classpath via spring-boot-starter-test (test scope only)"
+    ],
+    "values": [
+      "Console output only (System.out.println)",
+      "No structured logging framework configured",
+      "No APM or telemetry agent",
+      "No AOP instrumentation"
+    ],
+    "instrumentation_details": {
+      "logging_framework": "None (System.out.println only)",
+      "telemetry_provider": "None",
+      "aop_framework": "None",
+      "startup_file": "MessagingRabbitmqApplication.java"
+    }
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:32:10Z"
+}

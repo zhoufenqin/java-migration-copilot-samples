@@ -1,0 +1,23 @@
+{
+  "input_name": "Application Name",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Application name is 'messaging-rabbitmq', consistently identified across pom.xml and README.md. The README also refers to it as 'RabbitMQ Sender'.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml <artifactId>: messaging-rabbitmq",
+      "pom.xml <name>: messaging-rabbitmq",
+      "README.md title: '# RabbitMQ Sender'",
+      "Main class: MessagingRabbitmqApplication",
+      "No spring.application.name set in application.properties"
+    ],
+    "values": [
+      "messaging-rabbitmq",
+      "RabbitMQ Sender (README display name)",
+      "com.example:messaging-rabbitmq:0.0.1-SNAPSHOT (Maven coordinates)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:26:00Z"
+}

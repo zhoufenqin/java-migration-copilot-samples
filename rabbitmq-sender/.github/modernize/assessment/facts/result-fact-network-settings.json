@@ -1,0 +1,18 @@
+{
+  "input_name": "Network Settings",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container network configuration found. The rabbitmq-sender project has no Docker Compose network sections, Kubernetes Service or NetworkPolicy resources, or Dockerfile EXPOSE instructions. The application connects outbound to Azure Service Bus using standard HTTPS/AMQP 1.0 networking managed by the Azure SDK.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose.yml files found",
+      "No Kubernetes manifests found (no Service, NetworkPolicy resources)",
+      "No Dockerfile EXPOSE instructions (no Dockerfile exists)",
+      "Outbound connectivity to Azure Service Bus handled by Azure Spring Cloud SDK"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:27:30Z"
+}

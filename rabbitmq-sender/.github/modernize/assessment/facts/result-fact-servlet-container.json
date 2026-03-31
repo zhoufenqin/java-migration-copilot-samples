@@ -1,0 +1,26 @@
+{
+  "input_name": "Servlet Container",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No servlet container required. The rabbitmq-sender is a standalone Spring Boot application with no web components — it has no HTTP endpoints, no web.xml, no servlet/filter implementations, and no spring-boot-starter-web or embedded server dependency. It runs as a plain JVM process and terminates after sending messages to Azure Service Bus.",
+    "confidence": "high",
+    "evidence": [
+      "No spring-boot-starter-web dependency in pom.xml (no embedded Tomcat/Jetty/Undertow)",
+      "No javax.servlet-api or jakarta.servlet-api dependency found",
+      "No WEB-INF/web.xml or META-INF/persistence.xml deployment descriptor",
+      "No @WebServlet, @WebFilter, or @WebListener annotations found in source code",
+      "No HttpServlet or Filter interface implementations found",
+      "No server.port configuration in application.properties",
+      "Application packaging: standalone Spring Boot fat JAR (not WAR)"
+    ],
+    "values": [
+      "Servlet API: not required",
+      "Deployment model: standalone Spring Boot JAR",
+      "Web container: none",
+      "Servlets: 0, Filters: 0"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:32:50Z"
+}

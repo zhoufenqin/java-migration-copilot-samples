@@ -1,0 +1,18 @@
+{
+  "input_name": "Volume Mounts",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No volume mount configuration found. The rabbitmq-sender application is a stateless message producer with no persistent storage requirements — no Dockerfile VOLUME instructions, docker-compose volumes, or Kubernetes PVC/volumeMounts are defined.",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile found under rabbitmq-sender/",
+      "No docker-compose files found",
+      "No Kubernetes manifest files found",
+      "Application sends messages to Azure Service Bus and terminates — inherently stateless"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:25:50Z"
+}

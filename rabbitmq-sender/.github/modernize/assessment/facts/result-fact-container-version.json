@@ -1,0 +1,18 @@
+{
+  "input_name": "Container Version",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container runtime configuration found in the rabbitmq-sender project. No Docker, Podman, or Compose version can be identified.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose.yml files found",
+      "No CI/CD workflow files found under rabbitmq-sender/",
+      "No Dockerfile or Containerfile found",
+      "README.md contains no container version references"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:25:40Z"
+}

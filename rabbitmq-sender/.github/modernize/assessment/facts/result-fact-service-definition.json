@@ -1,0 +1,19 @@
+{
+  "input_name": "Service Definition",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No service definition files found. The rabbitmq-sender project contains no Docker Compose files, Kubernetes manifests, or Helm charts. The application has no container orchestration or service definition layer configured.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose*.yml files found",
+      "No k8s/ or manifests/ directories found",
+      "No Kubernetes resource files (Deployment, Service, ConfigMap, etc.) found",
+      "No Chart.yaml or Helm chart files found",
+      "Only source files and Maven build configuration present"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:27:10Z"
+}
