@@ -1,0 +1,24 @@
+{
+  "input_name": "Language Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "1 Java runtime dependency declared in pom.xml: Microsoft SQL Server JDBC driver. No container packaging with COPY/install commands exists.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml found at project root with 1 declared dependency",
+      "Dependency: com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre11 (compile scope)",
+      "Build plugin: maven-shade-plugin:3.2.4 used to produce uber-JAR (packages all dependencies into single JAR)",
+      "No Dockerfile COPY/RUN install commands for dependency files (application is not containerized)",
+      "No package.json, requirements.txt, go.mod, or *.csproj found"
+    ],
+    "values": [
+      "Dependency file: pom.xml (Maven)",
+      "Runtime dependencies: 1",
+      "Key dependency: com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre11",
+      "Packaging: Uber-JAR via maven-shade-plugin (self-contained executable JAR)"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

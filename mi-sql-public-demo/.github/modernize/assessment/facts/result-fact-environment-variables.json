@@ -1,0 +1,25 @@
+{
+  "input_name": "Environment Variables",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "2 configuration properties used, sourced from application.properties (not container environment variables)",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile with ENV instructions found",
+      "No docker-compose*.yml with environment sections found",
+      "No Kubernetes ConfigMap/Secret references found",
+      "No .env files found",
+      "application.properties defines: AZURE_SQLDB_CONNECTIONSTRING and AZURE_CLIENT_ID",
+      "MainSQL.java reads both properties via Properties.getProperty()"
+    ],
+    "values": [
+      "AZURE_SQLDB_CONNECTIONSTRING - Azure SQL Database JDBC connection string (database connectivity)",
+      "AZURE_CLIENT_ID - Azure Managed Identity client ID (authentication)",
+      "Count: 2 configuration properties",
+      "Categories: database, authentication"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

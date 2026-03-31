@@ -1,0 +1,23 @@
+{
+  "input_name": "Licensing Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "MIT License - Copyright Microsoft Corporation, applied at the repository level",
+    "confidence": "high",
+    "evidence": [
+      "LICENSE.md at repository root: 'MIT License, Copyright (c) Microsoft Corporation'",
+      "No separate LICENSE file within mi-sql-public-demo/ subdirectory (inherits repository license)",
+      "pom.xml has no <licenses> element declared",
+      "Key dependency: com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre11 - licensed under MIT License by Microsoft"
+    ],
+    "values": [
+      "Primary license: MIT License",
+      "Copyright holder: Microsoft Corporation",
+      "Dependency license: mssql-jdbc is MIT (Microsoft)",
+      "License compatibility: MIT is permissive and compatible with all common open-source licenses"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

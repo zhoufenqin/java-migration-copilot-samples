@@ -1,0 +1,29 @@
+{
+  "input_name": "External Services",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Azure SQL Database (Microsoft SQL Server) is the sole external service dependency",
+    "confidence": "high",
+    "evidence": [
+      "application.properties: AZURE_SQLDB_CONNECTIONSTRING=jdbc:sqlserver://${AZ_DATABASE_SERVER_NAME}.database.windows.net:1433;database=demo",
+      "pom.xml: dependency com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre11",
+      "MainSQL.java: SQLServerDataSource configured with MSI authentication (ActiveDirectoryMSI)",
+      "No docker-compose services for databases or caches",
+      "No Redis, MongoDB, RabbitMQ, or Kafka dependencies"
+    ],
+    "values": [
+      "Azure SQL Database (Microsoft SQL Server on Azure)",
+      "Connection: JDBC over TCP port 1433 with TLS encryption",
+      "Authentication: Azure Managed Identity (ActiveDirectoryMSI)",
+      "Database name: demo",
+      "Count: 1 external service"
+    ],
+    "script_output": {
+      "services": ["Azure SQL Database"],
+      "count": 1
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

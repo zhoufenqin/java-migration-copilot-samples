@@ -1,0 +1,18 @@
+{
+  "input_name": "Network Settings",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container network configuration found - application is not containerized",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose*.yml with networks sections found",
+      "No Kubernetes Service or NetworkPolicy manifests found",
+      "No Dockerfile with EXPOSE instructions found",
+      "Application makes outbound TCP connection to Azure SQL Database on port 1433 but has no container network configuration"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

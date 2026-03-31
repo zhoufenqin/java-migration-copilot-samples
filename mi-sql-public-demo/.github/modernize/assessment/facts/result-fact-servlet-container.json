@@ -1,0 +1,27 @@
+{
+  "input_name": "Servlet Container",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "Non-web application - no servlet container required. This is a standalone Java console application with no HTTP or web components.",
+    "confidence": "high",
+    "evidence": [
+      "No web.xml or WEB-INF/ directory found",
+      "No javax.servlet-api or jakarta.servlet-api dependency in pom.xml",
+      "No @WebServlet, @WebFilter, @WebListener annotations in source code",
+      "No servlet/filter class implementations (extends HttpServlet, implements Filter) found",
+      "No Spring Boot web starter or embedded container dependency",
+      "No WAR packaging configured (default JAR via maven-shade-plugin)",
+      "pom.xml contains only 1 dependency: mssql-jdbc (JDBC driver)"
+    ],
+    "values": [
+      "Servlet API: none required",
+      "Container: none (standalone console application)",
+      "Packaging: executable JAR (uber-JAR via maven-shade-plugin)",
+      "Servlets: 0",
+      "Filters: 0"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}

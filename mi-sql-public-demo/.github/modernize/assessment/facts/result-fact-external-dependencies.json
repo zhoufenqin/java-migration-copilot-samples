@@ -1,0 +1,24 @@
+{
+  "input_name": "External Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "One external system dependency: Azure SQL Database (Microsoft SQL Server hosted on Azure)",
+    "confidence": "high",
+    "evidence": [
+      "application.properties: AZURE_SQLDB_CONNECTIONSTRING=jdbc:sqlserver://${AZ_DATABASE_SERVER_NAME}.database.windows.net:1433;database=demo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30",
+      "application.properties: AZURE_CLIENT_ID=<your managed identity client id>",
+      "pom.xml: com.microsoft.sqlserver:mssql-jdbc:10.2.0.jre11",
+      "MainSQL.java: SQLServerDataSource with ActiveDirectoryMSI authentication",
+      "No Redis, LDAP, S3, Blob, or queue dependencies found in pom.xml or configuration",
+      "README.md: references Azure developer Java migration quickstart guide"
+    ],
+    "values": [
+      "Azure SQL Database (Microsoft SQL Server on Azure) - database",
+      "Azure Managed Identity service (via AZURE_CLIENT_ID) - authentication",
+      "Count: 1 primary external system + Azure Identity platform"
+    ]
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:22:00Z"
+}
