@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "createdAt": "2026-03-31T06:15:21.971527Z",
+  "status": "in_progress",
+  "repos": [
+    {
+      "name": "java-migration-copilot-samples.asset-manager",
+      "url": "https://github.com/zhoufenqin/java-migration-copilot-samples",
+      "clonePath": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\asset-manager",
+      "statusFileDirectory": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\.github\\modernize\\delegation\\asset-manager",
+      "sessionId": "a49d9a2c-f3d7-4aa1-b712-a90feb5afaec",
+      "detectedLanguage": "Java",
+      "relativePath": "asset-manager"
+    }
+  ]
+}
