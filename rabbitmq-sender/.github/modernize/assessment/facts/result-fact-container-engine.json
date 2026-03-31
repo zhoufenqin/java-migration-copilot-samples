@@ -1,0 +1,20 @@
+{
+  "input_name": "Container Engine",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container engine configuration found. The project has no Dockerfile, Containerfile, docker-compose files, build scripts, or CI/CD pipelines referencing Docker, Podman, or any container runtime.",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile or Containerfile found under rabbitmq-sender/",
+      "No docker-compose*.yml files found",
+      "No .dockerignore found",
+      "No *.sh or Makefile build scripts found",
+      "No Kubernetes YAML manifests found",
+      "README.md contains no docker/podman/container references"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:25:00Z"
+}

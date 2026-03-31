@@ -1,0 +1,34 @@
+{
+  "input_name": "Architecture Pattern",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "Event-Driven Single-Service Application. The application follows a minimal event-driven architecture: it is a standalone Spring Boot service that produces messages to Azure Service Bus queues (queue1 and queue2). There is no layering (no Controller/Service/Repository split), no API gateway, and no service discovery — it is a single deployable unit that acts purely as a message producer.",
+    "confidence": "high",
+    "evidence": [
+      "Single @SpringBootApplication entry point (MessagingRabbitmqApplication)",
+      "Only 2 source classes: MessagingRabbitmqApplication and Producer",
+      "Producer sends messages via ServiceBusTemplate to Azure Service Bus — event-driven outbound messaging",
+      "spring.cloud.azure.servicebus.entity-type=queue in application.properties",
+      "No @Controller, @RestController, @Service, @Repository annotations found",
+      "No service discovery (Eureka, Consul) or API gateway (Zuul, Spring Gateway) found",
+      "Single Maven module — single deployable JAR",
+      "No docker-compose multi-service definition found"
+    ],
+    "values": [
+      "Event-Driven",
+      "Single-Service",
+      "Message Producer pattern"
+    ],
+    "architecture_details": {
+      "pattern": "Event-Driven Single-Service",
+      "service_count": 1,
+      "has_service_discovery": false,
+      "has_api_gateway": false,
+      "has_message_broker": true,
+      "message_broker": "Azure Service Bus (AMQP 1.0)"
+    }
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:26:40Z"
+}

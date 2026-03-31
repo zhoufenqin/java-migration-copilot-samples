@@ -1,0 +1,26 @@
+{
+  "input_name": "Licensing Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The repository is licensed under the MIT License, copyright Microsoft Corporation, as declared in the root LICENSE.md file. No project-specific LICENSE file exists in the rabbitmq-sender sub-directory, so it inherits the repository root license. The pom.xml contains no explicit <licenses> declaration. Key dependency licenses: Spring Boot (Apache 2.0), Azure Spring Cloud SDK (MIT), Lombok (MIT), Jackson (Apache 2.0).",
+    "confidence": "high",
+    "evidence": [
+      "Repository root LICENSE.md: MIT License, Copyright (c) Microsoft Corporation",
+      "No LICENSE file found in rabbitmq-sender/ sub-directory (inherits root)",
+      "pom.xml: no <licenses> tag declared",
+      "Spring Boot (spring-boot-starter-parent): Apache License 2.0",
+      "Azure Spring Cloud SDK (spring-cloud-azure-*): MIT License",
+      "Lombok: MIT License",
+      "Jackson Databind: Apache License 2.0"
+    ],
+    "values": [
+      "MIT License (repository)",
+      "Copyright: Microsoft Corporation",
+      "Dependency licenses: Apache 2.0 (Spring Boot, Jackson), MIT (Azure SDK, Lombok)",
+      "All licenses are permissive and compatible"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:31:30Z"
+}

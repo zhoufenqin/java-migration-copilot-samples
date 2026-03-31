@@ -1,0 +1,21 @@
+{
+  "input_name": "Embedded Language Usage",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No embedded language usage detected. The rabbitmq-sender is a pure Java 17 application with no process execution, scripting engines, embedded interpreters, native library loading, or script resource files.",
+    "confidence": "high",
+    "evidence": [
+      "No Runtime.getRuntime().exec() or ProcessBuilder calls found in source code",
+      "No ScriptEngineManager, Nashorn, or GraalVM Polyglot API usage found",
+      "No GroovyShell, PythonInterpreter, JRuby, or Jython usage found",
+      "No System.loadLibrary() or native method declarations found",
+      "No .groovy, .js, .py, or .lua script files in src/main/resources/",
+      "No groovy, jython, jruby, nashorn, or JNA dependencies in pom.xml",
+      "Only 2 Java source files: MessagingRabbitmqApplication.java and Producer.java"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:32:20Z"
+}

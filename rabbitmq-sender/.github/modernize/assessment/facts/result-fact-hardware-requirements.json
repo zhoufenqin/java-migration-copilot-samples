@@ -1,0 +1,15 @@
+{
+  "task_id": "033",
+  "input_name": "Hardware Requirements",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No hardware requirements found",
+    "confidence": "high",
+    "evidence": [],
+    "values": [],
+    "script_output": { "ram": null, "cpu": null, "disk": null }
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-03-31T06:33:02Z"
+}

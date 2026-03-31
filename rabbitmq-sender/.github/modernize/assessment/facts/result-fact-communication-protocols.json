@@ -1,0 +1,25 @@
+{
+  "input_name": "Communication Protocols",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application uses AMQP 1.0 (Advanced Message Queuing Protocol) for outbound communication via Azure Service Bus. No inbound HTTP/REST endpoints, gRPC, WebSocket, or TCP/UDP communication is present. All messaging is outbound-only through the Azure Spring Cloud ServiceBusTemplate abstraction.",
+    "confidence": "high",
+    "evidence": [
+      "Producer.java uses ServiceBusTemplate.send() to dispatch messages to Azure Service Bus queue1 and queue2",
+      "spring-messaging-azure-servicebus dependency uses AMQP 1.0 protocol under the hood",
+      "spring.cloud.azure.servicebus.entity-type=queue configured in application.properties",
+      "No @RestController, @RequestMapping, HttpClient, or RestTemplate found in source code",
+      "No .proto files found (no gRPC)",
+      "No WebSocket or TCP socket usage found",
+      "No spring-boot-starter-amqp (RabbitMQ AMQP 0-9-1) — already migrated to Azure Service Bus AMQP 1.0"
+    ],
+    "values": [
+      "AMQP 1.0 (via Azure Service Bus / spring-messaging-azure-servicebus)",
+      "Outbound-only: application sends messages, does not receive",
+      "Queues: queue1, queue2"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:26:30Z"
+}

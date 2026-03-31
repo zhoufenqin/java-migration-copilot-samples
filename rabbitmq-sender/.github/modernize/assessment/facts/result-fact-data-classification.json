@@ -1,0 +1,14 @@
+{
+  "input_name": "Data Classification",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No data classification markers detected",
+    "confidence": "medium",
+    "evidence": [],
+    "values": [],
+    "script_output": { "classifications": [] }
+  },
+  "execution_time_seconds": 0,
+  "timestamp": "2026-03-31T06:32:33Z"
+}

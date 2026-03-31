@@ -1,0 +1,24 @@
+{
+  "input_name": "Application Type",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Background Service / Message Producer. The application is a Spring Boot standalone program that runs once, sends 10 messages to Azure Service Bus queues, and terminates. It has no REST controllers, no web endpoints, and no recurring scheduler — it is a one-shot message producer invoked from main().",
+    "confidence": "high",
+    "evidence": [
+      "Main class calls SpringApplication.run() then immediately invokes producer.run() and exits",
+      "Producer.run() sends 10 messages across queue1 and queue2 via ServiceBusTemplate then returns",
+      "No @RestController, @Controller, @RequestMapping, or web MVC annotations found",
+      "No HTTP server port configured in application.properties",
+      "Dependencies: spring-cloud-azure-starter + spring-messaging-azure-servicebus (messaging only, no web starter)",
+      "README describes it as a project that sends messages to a message broker"
+    ],
+    "values": [
+      "Background Service",
+      "Message Producer",
+      "Standalone Spring Boot application"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:27:45Z"
+}

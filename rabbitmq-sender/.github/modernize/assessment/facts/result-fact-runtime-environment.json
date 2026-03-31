@@ -1,0 +1,29 @@
+{
+  "input_name": "Runtime Environment",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Java 17 with Spring Boot 3.3.0 runtime. The application targets Java 17 (LTS) as declared in pom.xml and runs as a standalone Spring Boot fat JAR using the embedded application context. No container base image is configured.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml <properties><java.version>17</java.version> explicitly declares Java 17",
+      "Parent: spring-boot-starter-parent 3.3.0 (requires Java 17+)",
+      "Build: spring-boot-maven-plugin packages as executable fat JAR",
+      "No Dockerfile found (runtime not containerized)",
+      "Maven build tool (pom.xml)"
+    ],
+    "values": [
+      "Java 17 (LTS)",
+      "Spring Boot 3.3.0",
+      "Maven build tool",
+      "Standalone fat JAR deployment"
+    ],
+    "script_output": {
+      "runtime": "Java",
+      "version": "17",
+      "variant": "Spring Boot 3.3.0"
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:34:00Z"
+}

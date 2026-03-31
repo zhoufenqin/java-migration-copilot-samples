@@ -1,0 +1,20 @@
+{
+  "input_name": "Application Port",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No network ports are exposed. The rabbitmq-sender is a standalone background message producer with no HTTP server, no web endpoints, and no inbound network listeners. It communicates outbound-only to Azure Service Bus.",
+    "confidence": "high",
+    "evidence": [
+      "No Dockerfile EXPOSE instruction (no Dockerfile exists)",
+      "No docker-compose ports section (no docker-compose file exists)",
+      "No Kubernetes containerPort or servicePort found",
+      "No server.port setting in application.properties",
+      "No spring-boot-starter-web dependency in pom.xml",
+      "Application is a one-shot producer that sends messages and exits"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:26:10Z"
+}

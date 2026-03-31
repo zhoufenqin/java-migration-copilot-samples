@@ -1,0 +1,26 @@
+{
+  "input_name": "External Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application has two external system dependencies: (1) Azure Service Bus — the cloud message broker to which messages are published via AMQP 1.0; (2) Azure Managed Identity — used for passwordless authentication to Azure Service Bus, eliminating the need for stored credentials. No databases, caches, file shares, LDAP, or other external systems are required.",
+    "confidence": "high",
+    "evidence": [
+      "application.properties: spring.cloud.azure.servicebus.namespace= (Azure Service Bus namespace, set at runtime)",
+      "application.properties: spring.cloud.azure.servicebus.entity-type=queue",
+      "application.properties: spring.cloud.azure.credential.managed-identity-enabled=true",
+      "application.properties: spring.cloud.azure.credential.client-id= (Managed Identity client ID)",
+      "MessagingRabbitmqApplication.java: ServiceBusAdministrationClient for queue management",
+      "Producer.java: ServiceBusTemplate for message dispatch",
+      "No datasource, jdbc, redis, ldap, S3, or blob storage configuration found",
+      "README.md notes this is a demo of sending messages to a message broker (originally RabbitMQ, now Azure Service Bus)"
+    ],
+    "values": [
+      "Azure Service Bus (cloud message queue, AMQP 1.0) — required",
+      "Azure Managed Identity (authentication) — required",
+      "Count: 2 external system dependencies"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:31:10Z"
+}

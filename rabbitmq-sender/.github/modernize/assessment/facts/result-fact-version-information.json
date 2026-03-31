@@ -1,0 +1,26 @@
+{
+  "input_name": "Version Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "Application version is 0.0.1-SNAPSHOT as declared in pom.xml. This is a Maven SNAPSHOT (development/pre-release) version indicating the project has not been formally released.",
+    "confidence": "high",
+    "evidence": [
+      "pom.xml <version>: 0.0.1-SNAPSHOT (line 13)",
+      "Parent Spring Boot version: 3.3.0",
+      "spring-cloud-azure-dependencies BOM version: 5.14.0",
+      "lombok version: 1.18.24",
+      "No info.app.version set in application.properties",
+      "No git tags found in repository"
+    ],
+    "values": [
+      "0.0.1-SNAPSHOT",
+      "Version type: SNAPSHOT (development build)",
+      "Maven coordinates: com.example:messaging-rabbitmq:0.0.1-SNAPSHOT",
+      "Java version: 17",
+      "Spring Boot parent: 3.3.0"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:26:50Z"
+}

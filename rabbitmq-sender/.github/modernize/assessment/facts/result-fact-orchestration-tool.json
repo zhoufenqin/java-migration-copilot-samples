@@ -1,0 +1,19 @@
+{
+  "input_name": "Orchestration Tool",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No container orchestration tool is configured. The rabbitmq-sender project has no Docker Compose files, Kubernetes manifests, Docker Swarm configuration, or CI/CD workflows referencing any orchestration platform.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose*.yml files found",
+      "No k8s/ or manifests/ directories found",
+      "No Kubernetes YAML resources (kind: Deployment, kind: Service) found",
+      "No .github/workflows/ CI/CD files found under rabbitmq-sender/",
+      "No kubectl, helm, or docker stack references found"
+    ],
+    "values": []
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:27:00Z"
+}
