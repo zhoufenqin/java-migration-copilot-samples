@@ -1,0 +1,27 @@
+{
+  "input_name": "Network Settings",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No custom container network configurations are defined. For local development, Docker containers (PostgreSQL, RabbitMQ) are started with default bridge networking and host port mappings. The web and worker modules run as Spring Boot processes on the host (not containerized locally). For production (Azure Container Apps), the web module uses external ingress (publicly accessible) and the worker module has no ingress (internal-only background service). No VNet integration, private endpoints, or custom network policies are configured.",
+    "confidence": "high",
+    "evidence": [
+      "No docker-compose.yml with networks section",
+      "No Kubernetes NetworkPolicy or Service manifests",
+      "scripts/startapp.sh: 'docker run ... -p 5432:5432 postgres:latest' — default bridge, host port mapping",
+      "scripts/startapp.sh: 'docker run ... -p 5672:5672 -p 15672:15672 rabbitmq:management' — default bridge, host port mapping",
+      "scripts/deploy-to-azure.sh line 333: '--ingress external' for web Container App (publicly exposed on port 8080)",
+      "scripts/deploy-to-azure.sh: no --ingress flag for worker Container App (no public endpoint)"
+    ],
+    "values": [
+      "Local dev: default Docker bridge network (no custom config)",
+      "Local dev: PostgreSQL exposed on host port 5432",
+      "Local dev: RabbitMQ exposed on host ports 5672 (AMQP) and 15672 (management UI)",
+      "Production: web Container App — external ingress (HTTPS, public)",
+      "Production: worker Container App — no ingress (internal background service)",
+      "No VNet integration, private endpoints, or custom network policies"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:35:00Z"
+}

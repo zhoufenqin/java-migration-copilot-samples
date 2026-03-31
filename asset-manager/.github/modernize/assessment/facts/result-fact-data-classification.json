@@ -1,0 +1,28 @@
+{
+  "input_name": "Data Classification",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "The application handles Internal/Public data only. Data is limited to image file metadata (filename, content type, file size, S3 keys, URLs, timestamps) and the image files themselves. No personally identifiable information (PII), protected health information (PHI), payment card data (PCI), or other sensitive/confidential business data is stored or processed. AWS credentials in application.properties are the only sensitive configuration data present.",
+    "confidence": "high",
+    "evidence": [
+      "analyze.sh: no data classification markers detected",
+      "web/model/ImageMetadata.java: fields are id, filename, contentType, size, s3Key, s3Url, thumbnailKey, thumbnailUrl, uploadedAt, lastModified — no PII fields",
+      "worker/model/ImageMetadata.java: identical non-sensitive fields",
+      "No database schema SQL files found",
+      "No email, phone, SSN, credit card, medical, or financial data fields found in any model",
+      "AWS credentials (aws.accessKey, aws.secretKey) stored in application.properties — configuration-level sensitive data"
+    ],
+    "values": [
+      "Primary data classification: Internal (image files and metadata not publicly indexed but no PII)",
+      "Data types: image files (binary), image metadata (filename, size, MIME type, storage keys, timestamps)",
+      "No PII, PHI, PCI, or confidential business data",
+      "Configuration secrets: AWS access key and secret key (require secrets management)"
+    ],
+    "script_output": {
+      "classifications": ["Internal"]
+    }
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:39:00Z"
+}

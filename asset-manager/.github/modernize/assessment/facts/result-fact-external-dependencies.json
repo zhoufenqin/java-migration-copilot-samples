@@ -1,0 +1,28 @@
+{
+  "input_name": "External Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The Asset Manager application has 3 external runtime dependencies: PostgreSQL (relational database), RabbitMQ (message broker), and AWS S3 (object storage). Additionally, it requires JDK 8 and Maven 3.6.0+ as build/runtime prerequisites. No authentication services (LDAP, OAuth), caching layers (Redis), or search engines (Elasticsearch) are used.",
+    "confidence": "high",
+    "evidence": [
+      "web/application.properties: spring.datasource.url=jdbc:postgresql://localhost:5432/assets_manager (PostgreSQL)",
+      "worker/application.properties: same PostgreSQL JDBC connection string",
+      "web/application.properties: spring.rabbitmq.host=localhost, port=5672 (RabbitMQ)",
+      "web/AwsS3Config.java: S3Client.builder() using aws.accessKey, aws.secretKey, aws.region (AWS S3)",
+      "worker/AwsS3Config.java: S3Client.builder() for worker module (AWS S3)",
+      "web/pom.xml: software.amazon.awssdk:s3:2.25.13, spring-boot-starter-amqp, org.postgresql:postgresql",
+      "README.md: Prerequisites: JDK 8, Maven 3.6.0+, Docker"
+    ],
+    "values": [
+      "PostgreSQL: relational database for image metadata (port 5432, DB: assets_manager)",
+      "RabbitMQ: AMQP message broker for async image processing (port 5672, management UI: 15672)",
+      "AWS S3: object storage for image files (SDK: software.amazon.awssdk:s3 v2.25.13)",
+      "JDK 8: runtime prerequisite",
+      "Maven 3.6.0+: build tool prerequisite",
+      "Docker: infrastructure prerequisite for local development"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:36:00Z"
+}

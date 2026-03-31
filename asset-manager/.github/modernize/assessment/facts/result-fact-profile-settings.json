@@ -1,0 +1,29 @@
+{
+  "input_name": "Profile Settings",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application uses Spring profiles with 2 active profiles ('dev' and '!dev' / production), plus an optional 'backup' profile. Profile selection switches between local file storage (dev) and AWS S3 (non-dev). No profile-specific property files exist; all configuration is in a single application.properties. The dev profile is explicitly activated via -Dspring-boot.run.profiles=dev in startapp.sh.",
+    "confidence": "high",
+    "evidence": [
+      "web/LocalFileStorageService.java: @Profile('dev') — active only in dev profile, uses local filesystem storage at '../storage'",
+      "web/AwsS3Service.java: @Profile('!dev') — active in all non-dev profiles, uses AWS S3",
+      "web/BackupMessageProcessor.java: @Profile('backup') — optional backup processing listener",
+      "worker/LocalFileProcessingService.java: @Profile('dev') — local file processing in dev",
+      "worker/S3FileProcessingService.java: @Profile('!dev') — S3 file processing in non-dev",
+      "scripts/startapp.sh: -Dspring-boot.run.profiles=dev activates dev profile for both web and worker",
+      "No application-dev.properties or application-prod.properties files found — single application.properties for all profiles"
+    ],
+    "values": [
+      "Profiles identified: dev, production (implicit, !dev), backup (optional)",
+      "Profile activation: -Dspring-boot.run.profiles=dev (local dev via startapp.sh)",
+      "Profile-annotated components: 5 classes",
+      "dev profile: local filesystem storage, no S3 dependency",
+      "non-dev (production) profile: AWS S3 storage",
+      "backup profile: enables BackupMessageProcessor AMQP listener",
+      "No profile-specific property files — single application.properties"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:42:00Z"
+}

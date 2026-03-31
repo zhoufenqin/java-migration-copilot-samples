@@ -1,0 +1,23 @@
+{
+  "input_name": "Compliance Requirements",
+  "analysis_method": "Code",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No regulatory compliance requirements (GDPR, HIPAA, PCI-DSS, SOX, ISO 27001, SOC 2) are detected in the Asset Manager application. The application is a sample/workshop project that handles image files only — no personal data, health data, payment card data, or financial records are processed. No compliance documentation, data protection code, audit logging, or consent management features are present.",
+    "confidence": "medium",
+    "evidence": [
+      "analyze.sh: no compliance requirements detected",
+      "No COMPLIANCE.md, SECURITY.md, or privacy-policy.md files found",
+      "No GDPR, HIPAA, PCI-DSS, or SOX mentions in README.md or source code",
+      "Application data: image files and metadata only (filename, size, timestamps) — not PII/PHI/payment data",
+      "No audit logging, data anonymization, consent management, or data erasure features",
+      "No encryption at rest for stored data"
+    ],
+    "values": [],
+    "script_output": {
+      "compliance_requirements": []
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:38:30Z"
+}

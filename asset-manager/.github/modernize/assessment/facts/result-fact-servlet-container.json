@@ -1,0 +1,26 @@
+{
+  "input_name": "Servlet Container",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The web module uses an embedded Apache Tomcat servlet container (Servlet API 4.0 / Java EE 8) via spring-boot-starter-web in Spring Boot 2.7.18. The application is packaged as a fat JAR (not WAR), so no external servlet container is required. The worker module has no servlet container — it is a standalone Spring Boot application. The code uses javax.servlet API (pre-Jakarta namespace), which is a migration blocker for Spring Boot 3.x (which requires jakarta.servlet).",
+    "confidence": "high",
+    "evidence": [
+      "web/pom.xml: spring-boot-starter-web (includes tomcat-embed-core, tomcat-embed-el, tomcat-embed-websocket via Spring Boot 2.7.18 BOM)",
+      "Default JAR packaging (no <packaging>war</packaging> in pom.xml) — embedded container, no external app server",
+      "web/WebMvcConfig.java: imports javax.servlet.http.HttpServletRequest and HttpServletResponse — Servlet 4.0 (Java EE 8) namespace",
+      "No web.xml found — annotation-based servlet configuration",
+      "No container-specific files (weblogic.xml, jboss-web.xml, server.xml)",
+      "worker/pom.xml: spring-boot-starter (no web, no servlet container)"
+    ],
+    "values": [
+      "Servlet API: 4.0 (Java EE 8, javax.servlet namespace)",
+      "Container: Embedded Apache Tomcat 9.0.x (via Spring Boot 2.7.18)",
+      "Deployment model: Fat JAR (embedded container)",
+      "Worker module: no servlet container",
+      "Spring Boot 3.x migration note: javax.servlet → jakarta.servlet namespace change required"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:47:00Z"
+}

@@ -1,0 +1,24 @@
+{
+  "input_name": "Licensing Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The Asset Manager application is licensed under the MIT License, Copyright (c) 2025 Menghua Xiao. The MIT License is a permissive open-source license that allows use, modification, distribution, and sublicensing without restriction. The repository root also contains a MIT License from Microsoft Corporation. No license declaration exists in pom.xml. Key dependency licenses: Spring Boot (Apache 2.0), AWS SDK (Apache 2.0), PostgreSQL JDBC driver (BSD-style), Lombok (MIT), Jackson (Apache 2.0) — all compatible with MIT.",
+    "confidence": "high",
+    "evidence": [
+      "asset-manager/LICENSE: MIT License, Copyright (c) 2025 Menghua Xiao",
+      "LICENSE.md (repo root): MIT License, Copyright (c) Microsoft Corporation",
+      "No <licenses> section in asset-manager/pom.xml",
+      "No NOTICE, COPYING, or THIRD-PARTY-NOTICES files found in asset-manager"
+    ],
+    "values": [
+      "Primary license: MIT License",
+      "Copyright holder: Menghua Xiao (2025)",
+      "Repository-level license: MIT (Microsoft Corporation)",
+      "Key dependency licenses: Apache 2.0 (Spring Boot, AWS SDK, Jackson), BSD (PostgreSQL JDBC), MIT (Lombok)",
+      "License compatibility: All declared dependencies are permissive and compatible with MIT"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:38:00Z"
+}

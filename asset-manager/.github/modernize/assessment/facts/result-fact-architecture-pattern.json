@@ -1,0 +1,35 @@
+{
+  "input_name": "Architecture Pattern",
+  "analysis_method": "Hybrid",
+  "status": "success",
+  "result": {
+    "finding": "Multi-module Layered MVC application with Event-Driven inter-module communication. The project consists of two independently deployable Spring Boot modules sharing a PostgreSQL database and communicating asynchronously via RabbitMQ. Each module follows a classic layered architecture (Controller → Service → Repository). This is NOT a full microservices architecture due to the shared database and absence of service discovery or API gateway.",
+    "confidence": "high",
+    "evidence": [
+      "Two separate Spring Boot @SpringBootApplication classes: AssetsManagerApplication (web) and WorkerApplication (worker)",
+      "Layered package structure in web module: controller/, service/, repository/, model/, config/",
+      "Layered package structure in worker module: service/, repository/, model/, config/",
+      "Spring MVC @Controller with Thymeleaf templates — MVC pattern in web module",
+      "@RabbitListener in web/BackupMessageProcessor.java and worker/AbstractFileProcessingService.java — Event-Driven inter-module communication",
+      "Shared PostgreSQL database between web and worker — not true microservices isolation",
+      "No service discovery (Eureka, Consul), no API gateway (Zuul, Spring Cloud Gateway) found",
+      "No docker-compose.yml with multiple services; no Kubernetes manifests"
+    ],
+    "values": [
+      "Multi-module Maven application",
+      "Layered architecture (MVC) within each module",
+      "Event-Driven inter-module communication via RabbitMQ AMQP",
+      "Shared database pattern (not full microservices isolation)"
+    ],
+    "architecture_details": {
+      "pattern": "Multi-module Layered MVC + Event-Driven",
+      "service_count": 2,
+      "has_service_discovery": false,
+      "has_api_gateway": false,
+      "has_message_broker": true,
+      "shared_database": true
+    }
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:30:00Z"
+}

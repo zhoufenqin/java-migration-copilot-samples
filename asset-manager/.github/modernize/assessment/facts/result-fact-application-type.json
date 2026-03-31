@@ -1,0 +1,26 @@
+{
+  "input_name": "Application Type",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "The project is a multi-module application combining two types: (1) a Web Application with server-side rendering (Thymeleaf MVC) and REST endpoints in the 'web' module, and (2) a Background Worker / Message Consumer service in the 'worker' module that processes image thumbnails via RabbitMQ.",
+    "confidence": "high",
+    "evidence": [
+      "Spring Boot web/REST annotations found (analyze.sh output)",
+      "web/src/main/java/.../controller/HomeController.java: Spring MVC controller with Thymeleaf templates (upload.html, list.html, view.html)",
+      "web/src/main/java/.../controller/S3Controller.java: REST-style endpoints for S3 file operations",
+      "worker/src/main/java/.../WorkerApplication.java: Spring Boot application with AMQP listener (no web server)",
+      "worker/src/main/java/.../service/AbstractFileProcessingService.java: RabbitMQ message consumer for image processing"
+    ],
+    "values": [
+      "Web module: Web Application (Spring MVC + Thymeleaf server-side rendering) with REST endpoints",
+      "Worker module: Background Service / Message Consumer (Spring AMQP RabbitMQ listener)",
+      "Overall pattern: Web App + Background Worker architecture"
+    ],
+    "script_output": {
+      "application_type": "REST API"
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:26:30Z"
+}

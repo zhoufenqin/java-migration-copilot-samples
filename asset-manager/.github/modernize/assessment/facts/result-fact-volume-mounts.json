@@ -1,0 +1,24 @@
+{
+  "input_name": "Volume Mounts",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No Docker VOLUME instructions, docker-compose.yml volume definitions, or Kubernetes PersistentVolumeClaim configurations exist in the project. In the dev profile, the web module uses a local filesystem directory (default: '../storage') for file storage, which would require a volume mount if containerized. In production, files are stored in AWS S3, making local volume mounts unnecessary. The generated Dockerfiles do not declare any VOLUME instructions.",
+    "confidence": "high",
+    "evidence": [
+      "No VOLUME instruction in generated Dockerfiles (scripts/deploy-to-azure.sh lines 272-295)",
+      "No docker-compose.yml found in project",
+      "No Kubernetes manifests found",
+      "web/LocalFileStorageService.java: uses '@Value(\"${local.storage.directory:../storage}\")' for local file storage (dev profile only)",
+      "Production profile uses AWS S3 (AwsS3Service) — no local volume needed"
+    ],
+    "values": [
+      "No persistent volumes configured",
+      "Dev profile: local filesystem at '../storage' (relative path) — not containerized",
+      "Production profile: AWS S3 — no volume mount required",
+      "Database (PostgreSQL) and messaging (RabbitMQ) run as separate infrastructure containers without defined volume mounts in project config"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:25:00Z"
+}

@@ -1,0 +1,26 @@
+{
+  "input_name": "Version Information",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application version is 0.0.1-SNAPSHOT across all Maven modules, indicating it is in active pre-release development. The parent POM and both sub-modules (web and worker) share this version. No Git tags exist to indicate a released version. Framework dependency versions: Spring Boot 2.7.18, AWS SDK S3 2.25.13.",
+    "confidence": "high",
+    "evidence": [
+      "asset-manager/pom.xml: <version>0.0.1-SNAPSHOT</version> (parent POM)",
+      "asset-manager/web/pom.xml: inherits parent version 0.0.1-SNAPSHOT",
+      "asset-manager/worker/pom.xml: inherits parent version 0.0.1-SNAPSHOT",
+      "No git tags found in repository",
+      "No info.app.version or app.version in application.properties"
+    ],
+    "values": [
+      "Application version: 0.0.1-SNAPSHOT",
+      "Version type: SNAPSHOT (development/pre-release)",
+      "Spring Boot parent version: 2.7.18",
+      "AWS SDK S3 version: 2.25.13",
+      "Maven groupId: com.microsoft.migration",
+      "Java source compatibility: 8"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:31:00Z"
+}

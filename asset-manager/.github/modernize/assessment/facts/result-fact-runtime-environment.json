@@ -1,0 +1,33 @@
+{
+  "task_id": "014",
+  "input_name": "Runtime Environment",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "Java 8 (source/development), targeting Java 21 JRE (Eclipse Temurin) for containerized production deployment. The application is built with Maven using Spring Boot 2.7.18 framework. Both the web and worker modules are Spring Boot fat JARs executed via 'java -jar'.",
+    "confidence": "high",
+    "evidence": [
+      "asset-manager/pom.xml: <java.version>8</java.version> — current Java source compatibility",
+      "scripts/deploy-to-azure.sh: generated Dockerfiles use 'FROM eclipse-temurin:21-jre-alpine' — Java 21 JRE runtime in containers",
+      "web/pom.xml and worker/pom.xml: spring-boot-maven-plugin for fat JAR packaging",
+      "Entrypoint: ENTRYPOINT [\"java\", \"-jar\", \"app.jar\"] — standard Spring Boot JAR execution",
+      "Maven wrapper (mvnw) present — Maven-managed build",
+      "README.md: Prerequisites: JDK 8 required for running locally"
+    ],
+    "values": [
+      "Runtime: Java",
+      "Current source version: Java 8",
+      "Container runtime: Java 21 JRE (eclipse-temurin:21-jre-alpine)",
+      "Framework: Spring Boot 2.7.18",
+      "Build tool: Apache Maven (mvnw wrapper)",
+      "Deployment: Spring Boot fat JAR (java -jar)"
+    ],
+    "script_output": {
+      "runtime": "Java",
+      "version": "8 (source) / 21 (container JRE)",
+      "variant": "eclipse-temurin alpine"
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:43:30Z"
+}

@@ -1,0 +1,26 @@
+{
+  "input_name": "XML Configs",
+  "analysis_method": "LLM",
+  "status": "not_applicable",
+  "result": {
+    "finding": "No application XML configuration files are used. The project is a modern Spring Boot application relying exclusively on Java annotation-based configuration (@Configuration, @Service, @Repository, @Controller, @Value) and application.properties files. The only XML files present are Maven build descriptors (pom.xml), which are not application configuration files.",
+    "confidence": "high",
+    "evidence": [
+      "Only 3 XML files found in project (excluding target/): pom.xml, web/pom.xml, worker/pom.xml",
+      "No applicationContext*.xml, spring-*.xml, beans.xml, hibernate.cfg.xml, web.xml, or persistence.xml found",
+      "No MyBatis mapper XML files or log4j.xml found",
+      "Spring Boot auto-configuration via annotations: @SpringBootApplication, @Configuration, @EnableJpaRepositories",
+      "Database config via application.properties (spring.datasource.*, spring.jpa.*) not XML",
+      "RabbitMQ config via @Configuration class (RabbitConfig.java) not XML"
+    ],
+    "values": [
+      "No application XML configuration files",
+      "Build tool: 3 pom.xml files (Maven build descriptors only)",
+      "Configuration approach: Spring Boot annotation-based + application.properties",
+      "Framework: Spring Boot 2.7.18 (Java Config)",
+      "ORM: Spring Data JPA with annotation-based entity mapping (@Entity, @Id)"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:43:00Z"
+}

@@ -1,0 +1,27 @@
+{
+  "input_name": "Communication Protocols",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application uses two communication protocols: (1) HTTP/REST via Spring MVC for browser-to-web-module communication (Thymeleaf-rendered pages with GET/POST endpoints for file upload, listing, viewing, and deletion), and (2) AMQP via RabbitMQ for asynchronous inter-module messaging between the web module (producer) and the worker module (consumer) for image processing tasks. No gRPC, WebSocket, or TCP/UDP protocols are used.",
+    "confidence": "high",
+    "evidence": [
+      "web/HomeController.java: @Controller, @GetMapping('/') — HTTP GET",
+      "web/S3Controller.java: @Controller, @RequestMapping, @GetMapping, @PostMapping — HTTP GET and POST endpoints",
+      "web/LocalFileStorageService.java: rabbitTemplate.convertAndSend(IMAGE_PROCESSING_QUEUE, message) — AMQP publish",
+      "web/AwsS3Service.java: rabbitTemplate.convertAndSend(IMAGE_PROCESSING_QUEUE, message) — AMQP publish",
+      "web/BackupMessageProcessor.java: @RabbitListener(queues=IMAGE_PROCESSING_QUEUE) — AMQP subscribe",
+      "worker/AbstractFileProcessingService.java: @RabbitListener(queues=IMAGE_PROCESSING_QUEUE) — AMQP subscribe",
+      "No .proto files found — no gRPC",
+      "No WebSocket or TCP socket code found"
+    ],
+    "values": [
+      "HTTP/REST (Spring MVC): browser to web module, port 8080",
+      "AMQP/RabbitMQ: web module to worker module (async, queue: IMAGE_PROCESSING_QUEUE)",
+      "External: HTTPS to AWS S3 API (via AWS SDK v2)",
+      "External: JDBC/TCP to PostgreSQL (port 5432)"
+    ]
+  },
+  "execution_time_seconds": 3,
+  "timestamp": "2026-03-31T06:29:00Z"
+}

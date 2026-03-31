@@ -1,0 +1,24 @@
+{
+  "input_name": "Resource Limits",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No explicit CPU or memory resource limits are configured in the project. No docker-compose.yml or Kubernetes manifests exist with resource specifications. The deploy script configures replica scaling (min 1, max 3) for both web and worker Azure Container Apps, which use Azure Container Apps default resource allocations (0.25 vCPU / 0.5Gi memory per replica by default). No custom CPU or memory constraints are explicitly set.",
+    "confidence": "medium",
+    "evidence": [
+      "No docker-compose.yml with deploy.resources section found",
+      "No Kubernetes resource limits/requests manifests found",
+      "scripts/deploy-to-azure.sh lines 336-337: '--min-replicas 1 --max-replicas 3' for web Container App",
+      "scripts/deploy-to-azure.sh lines 403-404: '--min-replicas 1 --max-replicas 3' for worker Container App",
+      "No '--cpu' or '--memory' flags in 'az containerapp create' commands in deploy script"
+    ],
+    "values": [
+      "CPU limits: not explicitly set (Azure Container Apps default: 0.25 vCPU per replica)",
+      "Memory limits: not explicitly set (Azure Container Apps default: 0.5Gi per replica)",
+      "Web module: min 1 replica, max 3 replicas",
+      "Worker module: min 1 replica, max 3 replicas"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:34:00Z"
+}

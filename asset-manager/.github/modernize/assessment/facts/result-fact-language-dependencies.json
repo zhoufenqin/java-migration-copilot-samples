@@ -1,0 +1,25 @@
+{
+  "input_name": "Language Dependencies",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "The application is a Maven-managed Java project with dependencies declared in pom.xml files. Dependencies are resolved at build time and bundled into Spring Boot fat JARs. The Dockerfiles copy only the pre-built JAR (COPY target/*.jar app.jar) — no package manager runs inside the container. Both modules share the Spring Boot 2.7.18 parent BOM for version management.",
+    "confidence": "high",
+    "evidence": [
+      "Generated Dockerfiles: 'COPY target/*.jar app.jar' — fat JAR packaging, no in-container Maven install",
+      "asset-manager/pom.xml: parent BOM spring-boot-parent 2.7.18, Java 8, two modules (web, worker)",
+      "web/pom.xml: 9 declared dependencies (spring-boot-starter-web, spring-boot-starter-thymeleaf, spring-boot-starter-amqp, software.amazon.awssdk:s3:2.25.13, spring-boot-starter-data-jpa, postgresql, lombok, spring-boot-devtools, spring-boot-configuration-processor)",
+      "worker/pom.xml: 7 declared dependencies (spring-boot-starter, spring-boot-starter-amqp, software.amazon.awssdk:s3:2.25.13, spring-boot-starter-data-jpa, postgresql, lombok, jackson-databind)",
+      "Test scope (not in fat JAR): spring-boot-starter-test (JUnit 5, Mockito)"
+    ],
+    "values": [
+      "Language: Java (Maven)",
+      "Build artifact: Spring Boot fat JAR (all dependencies bundled)",
+      "Web module runtime dependencies (8): spring-boot-starter-web, spring-boot-starter-thymeleaf, spring-boot-starter-amqp, aws-sdk-s3 v2.25.13, spring-boot-starter-data-jpa, postgresql, spring-boot-devtools, lombok",
+      "Worker module runtime dependencies (6): spring-boot-starter, spring-boot-starter-amqp, aws-sdk-s3 v2.25.13, spring-boot-starter-data-jpa, postgresql, jackson-databind",
+      "Shared BOM: Spring Boot 2.7.18 parent POM"
+    ]
+  },
+  "execution_time_seconds": 2,
+  "timestamp": "2026-03-31T06:46:30Z"
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "019",
+  "input_name": "External Services",
+  "analysis_method": "Code",
+  "status": "success",
+  "result": {
+    "finding": "The application depends on three external services: PostgreSQL (relational database for image metadata), RabbitMQ (message broker for async image processing between web and worker), and AWS S3 (object storage for image files). The automated script found no docker-compose.yml to detect services from, but manual analysis of application.properties and source code confirms all three services.",
+    "confidence": "high",
+    "evidence": [
+      "web/application.properties: spring.datasource.url=jdbc:postgresql://localhost:5432/assets_manager",
+      "web/application.properties: spring.rabbitmq.host=localhost, spring.rabbitmq.port=5672",
+      "web/application.properties: aws.accessKey, aws.secretKey, aws.region, aws.s3.bucket",
+      "worker/application.properties: same PostgreSQL, RabbitMQ, and AWS S3 configuration",
+      "web/pom.xml: org.postgresql:postgresql (runtime), spring-boot-starter-amqp, software.amazon.awssdk:s3 v2.25.13",
+      "scripts/startapp.sh: docker run postgres:latest (port 5432), docker run rabbitmq:management (ports 5672, 15672)"
+    ],
+    "values": [
+      "PostgreSQL (latest in dev, Azure Database for PostgreSQL Flexible Server in production)",
+      "RabbitMQ with management plugin (local dev), Azure Service Bus (production target)",
+      "AWS S3 (current), Azure Blob Storage (production target)"
+    ],
+    "script_output": {
+      "services": ["PostgreSQL", "RabbitMQ", "AWS S3"],
+      "count": 3
+    }
+  },
+  "execution_time_seconds": 1,
+  "timestamp": "2026-03-31T06:35:30Z"
+}

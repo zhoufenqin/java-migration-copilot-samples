@@ -1,0 +1,29 @@
+{
+  "input_name": "Environment Variables",
+  "analysis_method": "LLM",
+  "status": "success",
+  "result": {
+    "finding": "No ENV instructions exist in Dockerfiles (generated at deploy time) and no .env files are present. The application is configured via Spring Boot application.properties with hardcoded placeholder values. At deployment time, the Azure Container Apps are configured with Azure-specific environment variables via the deploy script. The application uses @Value annotations to read AWS S3 credentials, region, and bucket; RabbitMQ host/port/credentials; and database connection from properties.",
+    "confidence": "medium",
+    "evidence": [
+      "No Dockerfile ENV instructions in generated Dockerfiles (scripts/deploy-to-azure.sh)",
+      "No .env or .env.example files found in project",
+      "web/AwsS3Config.java: @Value for aws.accessKey, aws.secretKey, aws.region",
+      "web/AwsS3Service.java: @Value for aws.s3.bucket",
+      "worker/AwsS3Config.java: @Value for aws.accessKeyId, aws.secretKey, aws.region",
+      "worker/S3FileProcessingService.java: @Value for aws.s3.bucket",
+      "web/LocalFileStorageService.java: @Value for local.storage.directory (default: ../storage)",
+      "scripts/deploy-to-azure.sh: passes Azure env vars to Container Apps: AZURE_CLIENT_ID, AZURE_STORAGE_ACCOUNT_NAME, AZURE_STORAGE_BLOB_CONTAINER_NAME, AZURE_SERVICEBUS_NAMESPACE, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_URL"
+    ],
+    "values": [
+      "AWS credentials (current): aws.accessKey, aws.secretKey, aws.region, aws.s3.bucket",
+      "RabbitMQ (current): spring.rabbitmq.host, spring.rabbitmq.port, spring.rabbitmq.username, spring.rabbitmq.password",
+      "Database (current): spring.datasource.url, spring.datasource.username, spring.datasource.password",
+      "Azure env vars (post-migration): AZURE_CLIENT_ID, AZURE_STORAGE_ACCOUNT_NAME, AZURE_STORAGE_BLOB_CONTAINER_NAME, AZURE_SERVICEBUS_NAMESPACE",
+      "Azure DB env vars (post-migration): SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_URL",
+      "Local storage (dev profile): local.storage.directory (default: ../storage)"
+    ]
+  },
+  "execution_time_seconds": 4,
+  "timestamp": "2026-03-31T06:28:00Z"
+}
