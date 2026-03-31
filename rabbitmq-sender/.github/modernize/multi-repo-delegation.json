@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "createdAt": "2026-03-31T06:16:10.3355032Z",
+  "status": "in_progress",
+  "repos": [
+    {
+      "name": "java-migration-copilot-samples.rabbitmq-sender",
+      "url": "https://github.com/zhoufenqin/java-migration-copilot-samples",
+      "clonePath": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\rabbitmq-sender",
+      "statusFileDirectory": "C:\\Users\\fenzho\\code\\github\\test\\repos\\java-migration-copilot-samples\\.github\\modernize\\delegation\\rabbitmq-sender",
+      "sessionId": "c3a69ff7-680d-4f00-ba29-b1123df0d875",
+      "detectedLanguage": "Java",
+      "relativePath": "rabbitmq-sender"
+    }
+  ]
+}
